@@ -180,16 +180,16 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>It&rsquo;s not hard to write a request handler in the Scala console using Unfiltered. The tricky part is getting everything on the classpath.</p>
 <h3><a href="#play-project" name="play-project" class="anchor"><span class="anchor-link"></span></a>Play Project</h3>
 <p>The approach recommended here uses <a href="https://github.com/foundweekends/giter8#readme">giter8</a>, a tool for setting up projects based on templates stored in github. Assuming you don&rsquo;t have giter8 installed and you are on a network-connected Linux or Mac, it&rsquo;s easy to fix that.</p>
-<pre class="prettyprint"><code>curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh
+<pre class="prettyprint"><code class="language-sh">curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh
 </code></pre>
 <p>That is <a href="https://github.com/foundweekends/conscript#readme">conscript</a>. Its <code>setup.sh</code> places a permanent (assuming you don&rsquo;t delete it) executable script in <code>~/bin/cs</code>. At some point you may want to add <code>~/bin</code> to your executable search path, but these instructions will not assume it is.</p>
-<pre class="prettyprint"><code>~/bin/cs foundweekends/giter8
+<pre class="prettyprint"><code class="language-sh">~/bin/cs foundweekends/giter8
 </code></pre>
 <p>That installs a <code>g8</code>. Now you have a script to run giter8. The next step creates a sbt project under the current working directory.</p>
-<pre class="prettyprint"><code>~/bin/g8 unfiltered/unfiltered --name=justplayin
+<pre class="prettyprint"><code class="language-sh">~/bin/g8 unfiltered/unfiltered --name=justplayin
 </code></pre>
 <p>Okay, finally we can use this project with sbt to get a console for Unfiltered. You do have <a href="http://www.scala-sbt.org/">sbt setup</a>, don&rsquo;t you?</p>
-<pre class="prettyprint"><code>cd justplayin
+<pre class="prettyprint"><code class="language-sh">cd justplayin
 sbt console
 </code></pre>
 <h3><a href="#consoled" name="consoled" class="anchor"><span class="anchor-link"></span></a>Consoled</h3>
@@ -203,7 +203,7 @@ val echo = unfiltered.filter.Planify {
 <p>This filter <code>echo</code> would work with any servlet container. We can use it in a Jetty server right now.</p>
 <pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.anylocal.plan(echo).run()</code></pre>
 <p>The startup message tells you which open port was selected, and by default it is only listening to requests from 127.0.0.1. So on the same machine, you can make requests to your server. e.g.</p>
-<pre class="prettyprint"><code>curl http://127.0.0.1:&lt;the right port&gt;/hello+world
+<pre class="prettyprint"><code class="language-sh">curl http://127.0.0.1:&lt;the right port&gt;/hello+world
 </code></pre>
 <p>Fancy desktop web browsers will work too. Notice that exactly one path segment is required for the filter to respond to the request. If you ask for the root path or a deeper path, the <code>echo</code> filter will not handle the request and Jetty responds with a 404 page.</p>
 <p>If we want to handle any request, we could broaden the pattern matching expression. (Press enter to stop the running server.)</p>

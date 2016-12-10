@@ -213,7 +213,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 ).run</code></pre>
 <p>In your browser, open the url <code>http://localhost:8080/</code> and you should be greeted with its native authentication dialog. Enter <code>jim</code> and <code>j@m</code>, if you are feeling authentic.</p>
 <p>Once authenticated you should see simple text questioning your preferences. Why is this? Well, you have yet to tell the server what you prefer. In your url bar, enter the address</p>
-<pre class="prettyprint"><code>http://localhost:8080/prefer?pref=kittens
+<pre class="prettyprint"><code class="nocode">http://localhost:8080/prefer?pref=kittens
 </code></pre>
 <p>or whatever else you have a preference for. Now, every time you request <code>http://localhost:8080/</code> the server has remembered your preference for you. This is a cookie at work!</p>
 <p>If you change your mind you can always hit the <code>prefer</code> path with a new pref or just tell the server to forget it by entering the address <code>http://localhost:8080/forget</code>.</p>

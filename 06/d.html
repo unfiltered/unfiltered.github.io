@@ -206,20 +206,20 @@ object SillyStore extends unfiltered.filter.Plan {
 <p>The method <code>local</code>, like <code>anylocal</code>, binds only to the loopback interface, for safety. SillyStore is not quite &ldquo;web-scale&rdquo;.</p>
 <h3><a href="#curling-the-store" name="curling-the-store" class="anchor"><span class="anchor-link"></span></a>Curling the Store</h3>
 <p>The command line utility <a href="http://curl.haxx.se/">cURL</a> is great for testing HTTP servers. First, we&rsquo;ll try to retrieve a record.</p>
-<pre class="prettyprint"><code>curl -i http://127.0.0.1:8080/record/my+file
+<pre class="prettyprint"><code class="language-sh">curl -i http://127.0.0.1:8080/record/my+file
 </code></pre>
 <p>The <code>-i</code> tells it to print out the response headers. Curl does a GET by default; since there is no record by that or any other name it prints out the 404 response with our error message. We have to PUT something into storage.</p>
-<pre class="prettyprint"><code>echo &quot;Ta daa&quot; | curl -i http://127.0.0.1:8080/record/my+file -T -
+<pre class="prettyprint"><code class="language-sh">echo &quot;Ta daa&quot; | curl -i http://127.0.0.1:8080/record/my+file -T -
 </code></pre>
 <p>Curl&rsquo;s option <code>-T</code> is for uploading files with a PUT, and the hyphen tells it to read the data piped in from echo. Now, we should have better luck with a GET request:</p>
-<pre class="prettyprint"><code>curl -i http://127.0.0.1:8080/record/my+file
+<pre class="prettyprint"><code class="language-sh">curl -i http://127.0.0.1:8080/record/my+file
 </code></pre>
 <p>That worked, right? We should also be able to replace items:</p>
-<pre class="prettyprint"><code>echo &quot;Ta daa 2&quot; | curl -i http://127.0.0.1:8080/record/my+file -T -
+<pre class="prettyprint"><code class="language-sh">echo &quot;Ta daa 2&quot; | curl -i http://127.0.0.1:8080/record/my+file -T -
 curl -i http://127.0.0.1:8080/record/my+file
 </code></pre>
 <p>And lastly, test the method error message:</p>
-<pre class="prettyprint"><code>curl -i http://127.0.0.1:8080/record/my+file -X DELETE
+<pre class="prettyprint"><code class="language-sh">curl -i http://127.0.0.1:8080/record/my+file -X DELETE
 </code></pre>
 <p>405 Method Not Allowed. But it&rsquo;s a shame, really. DELETE support would be easy to add. Why don&rsquo;t you give it a try?</p>
 <div class="nav-next">
