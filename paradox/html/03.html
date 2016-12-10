@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Bindings and Servers · Unfiltered</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='website'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.0-beta2
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="01.html">Try Unfiltered</a></li>
+  <li><a href="02.html">Plans and Intents</a></li>
+  <li><a href="03.html" class="active">Bindings and Servers</a></li>
+  <li><a href="04.html">Project Setup</a></li>
+  <li><a href="05.html">Community</a></li>
+  <li><a href="06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="06/a.html">Request Matchers</a></li>
+    <li><a href="06/b.html">Within the Parameters</a></li>
+    <li><a href="06/c.html">Response Functions</a></li>
+    <li><a href="06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="07/a.html">Directive Intent</a></li>
+    <li><a href="07/b.html">Parameters as Directives</a></li>
+    <li><a href="07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="07/d.html">Required Parameters</a></li>
+    <li><a href="07/e.html">Independent Failure</a></li>
+    <li><a href="07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="08/a.html">Planning for Any-thing</a></li>
+    <li><a href="08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="10/a.html">Trying Netty</a></li>
+    <li><a href="10/b.html">Execution and Exceptions</a></li>
+    <li><a href="10/c.html">Chunked Requests</a></li>
+    <li><a href="10/d.html">Going Asynchronous</a></li>
+    <li><a href="10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="11.html">Jetty Extras</a></li>
+  <li><a href="99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="index.html">Unfiltered</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.0-beta2
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="01.html">Try Unfiltered</a></li>
+  <li><a href="02.html">Plans and Intents</a></li>
+  <li><a href="03.html" class="active">Bindings and Servers</a></li>
+  <li><a href="04.html">Project Setup</a></li>
+  <li><a href="05.html">Community</a></li>
+  <li><a href="06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="06/a.html">Request Matchers</a></li>
+    <li><a href="06/b.html">Within the Parameters</a></li>
+    <li><a href="06/c.html">Response Functions</a></li>
+    <li><a href="06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="07/a.html">Directive Intent</a></li>
+    <li><a href="07/b.html">Parameters as Directives</a></li>
+    <li><a href="07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="07/d.html">Required Parameters</a></li>
+    <li><a href="07/e.html">Independent Failure</a></li>
+    <li><a href="07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="08/a.html">Planning for Any-thing</a></li>
+    <li><a href="08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="10/a.html">Trying Netty</a></li>
+    <li><a href="10/b.html">Execution and Exceptions</a></li>
+    <li><a href="10/c.html">Chunked Requests</a></li>
+    <li><a href="10/d.html">Going Asynchronous</a></li>
+    <li><a href="10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="11.html">Jetty Extras</a></li>
+  <li><a href="99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+<div class="nav-breadcrumbs">
+<ul>
+  <li><a href="index.html">Unfiltered</a></li>
+  <li>Bindings and Servers</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#bindings-and-servers" name="bindings-and-servers" class="anchor"><span class="anchor-link"></span></a>Bindings and Servers</h2>
+<p>The core module unfiltered-library does not depend on or reference any particular server backend. It defines internal abstractions for requests and responses, with higher level abstractions on top.</p>
+<p>An application or library that depends only on the core library could be used with any backend that Unfiltered supports, but in most cases it will depend on a <em>binding</em> module.</p>
+<h3><a href="#binding-modules" name="binding-modules" class="anchor"><span class="anchor-link"></span></a>Binding Modules</h3>
+<p>These bind Unfiltered&rsquo;s generic request and response interfaces to a given implementation, as well as intent types and plan traits.</p>
+<h4><a href="#servlet-filters-unfiltered-filter-" name="servlet-filters-unfiltered-filter-" class="anchor"><span class="anchor-link"></span></a>Servlet Filters (unfiltered-filter)</h4>
+<p>The Java Servlet API enables you to write applications that run on servlet containers, anything from Tomcat to Google App Engine. Its plan trait is a servlet filter.</p>
+<h4><a href="#asynchronous-servlet-filters-unfiltered-filter-async-" name="asynchronous-servlet-filters-unfiltered-filter-async-" class="anchor"><span class="anchor-link"></span></a>Asynchronous Servlet Filters (unfiltered-filter-async)</h4>
+<p>Asynchronous Servlet Filters are using jetty-continuation under the hood which should provide a general purpose API that will work asynchronously on any servlet-3.0 container, as well as on Jetty 6, 7 or 8 (Continuations will also work in blocking mode with any servlet 2.5 container.)</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.request.{Path =&gt; UFPath, _}
+import unfiltered.response._
+
+object AsyncPlan extends unfiltered.filter.async.Plan  {
+  def intent = {
+    case GET(UFPath(&quot;/pass&quot;)) =&gt; Pass
+    case req@GET(UFPath(&quot;/async&quot;)) =&gt;
+      //&quot;respond&quot; is usually called from an asynchronous callback handler
+      req.respond(ResponseString(&quot;test&quot;) ~&gt; Ok)
+  }
+}
+//then you can register this plan with jetty as usual
+unfiltered.jetty.Server.http(8080).plan(AsyncPlan).run()</code></pre>
+<blockquote>
+  <p><strong>Note:</strong> Alternately, <code>local(8080)</code> binds to the loopback network  interface only.</p>
+</blockquote>
+<h4><a href="#netty-channel-handlers-unfiltered-netty-" name="netty-channel-handlers-unfiltered-netty-" class="anchor"><span class="anchor-link"></span></a>Netty Channel Handlers (unfiltered-netty)</h4>
+<p>Netty defines <em>channels</em> for network I/O and implements them using Java&rsquo;s Native I/O (NIO) interface. Its plan traits are upstream channel handlers, and the module defines intents and plans in separate <code>cycle</code> and <code>async</code> subpackages, the former for traditional request-response cycles and the latter for open-ended interaction.</p>
+<h3><a href="#server-modules" name="server-modules" class="anchor"><span class="anchor-link"></span></a>Server Modules</h3>
+<p>Server modules define runnable servers to execute your plans. They are entirely optional. Applications can instead use Unfiltered&rsquo;s binding modules with external containers, or they can interface directly with server libraries.</p>
+<h4><a href="#unfiltered-jetty" name="unfiltered-jetty" class="anchor"><span class="anchor-link"></span></a>unfiltered-jetty</h4>
+<p>Includes builders for Jetty servers that implement the HTTP and HTTPS protocols. With this server it is particularly easy to serve a web browser interface for a local process. Unfiltered even gives you a shortcut to open a browser window, if the user is on a 1.6+ JVM that supports it.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.response._
+val hello = unfiltered.filter.Planify {
+  case _ =&gt; ResponseString(&quot;hello world&quot;)
+}
+unfiltered.jetty.Server.anylocal.plan(hello).run { s =&gt;
+  unfiltered.util.Browser.open(
+    s.portBindings.head.url
+  )
+}</code></pre>
+<h4><a href="#unfiltered-netty-server" name="unfiltered-netty-server" class="anchor"><span class="anchor-link"></span></a>unfiltered-netty-server</h4>
+<p>Bootstraps and binds a server for your channel handlers.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.response._
+val hello = unfiltered.netty.cycle.Planify {
+  case _ =&gt; ResponseString(&quot;hello world&quot;)
+}
+unfiltered.netty.Server.http(8080).plan(hello).run()</code></pre>
+<div class="nav-next">
+<p><strong>Next:</strong> <a href="04.html">Project Setup</a></p>
+</div>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="03.html#bindings-and-servers">Bindings and Servers</a>
+  <ul>
+    <li><a href="03.html#binding-modules">Binding Modules</a></li>
+    <li><a href="03.html#server-modules">Server Modules</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2016</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="js/magellan.js"></script>
+
+<style type="text/css">@import "lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>

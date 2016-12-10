@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Silly Store · Unfiltered</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='website'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.0-beta2
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../01.html">Try Unfiltered</a></li>
+  <li><a href="../02.html">Plans and Intents</a></li>
+  <li><a href="../03.html">Bindings and Servers</a></li>
+  <li><a href="../04.html">Project Setup</a></li>
+  <li><a href="../05.html">Community</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="../06/a.html">Request Matchers</a></li>
+    <li><a href="../06/b.html">Within the Parameters</a></li>
+    <li><a href="../06/c.html">Response Functions</a></li>
+    <li><a href="../06/d.html" class="active">Silly Store</a></li>
+  </ul></li>
+  <li><a href="../07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="../07/a.html">Directive Intent</a></li>
+    <li><a href="../07/b.html">Parameters as Directives</a></li>
+    <li><a href="../07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="../07/d.html">Required Parameters</a></li>
+    <li><a href="../07/e.html">Independent Failure</a></li>
+    <li><a href="../07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="../08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="../08/a.html">Planning for Any-thing</a></li>
+    <li><a href="../08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="../09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="../09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="../09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="../10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="../10/a.html">Trying Netty</a></li>
+    <li><a href="../10/b.html">Execution and Exceptions</a></li>
+    <li><a href="../10/c.html">Chunked Requests</a></li>
+    <li><a href="../10/d.html">Going Asynchronous</a></li>
+    <li><a href="../10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="../11.html">Jetty Extras</a></li>
+  <li><a href="../99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../index.html">Unfiltered</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.0-beta2
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../01.html">Try Unfiltered</a></li>
+  <li><a href="../02.html">Plans and Intents</a></li>
+  <li><a href="../03.html">Bindings and Servers</a></li>
+  <li><a href="../04.html">Project Setup</a></li>
+  <li><a href="../05.html">Community</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="../06/a.html">Request Matchers</a></li>
+    <li><a href="../06/b.html">Within the Parameters</a></li>
+    <li><a href="../06/c.html">Response Functions</a></li>
+    <li><a href="../06/d.html" class="active">Silly Store</a></li>
+  </ul></li>
+  <li><a href="../07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="../07/a.html">Directive Intent</a></li>
+    <li><a href="../07/b.html">Parameters as Directives</a></li>
+    <li><a href="../07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="../07/d.html">Required Parameters</a></li>
+    <li><a href="../07/e.html">Independent Failure</a></li>
+    <li><a href="../07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="../08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="../08/a.html">Planning for Any-thing</a></li>
+    <li><a href="../08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="../09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="../09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="../09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="../10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="../10/a.html">Trying Netty</a></li>
+    <li><a href="../10/b.html">Execution and Exceptions</a></li>
+    <li><a href="../10/c.html">Chunked Requests</a></li>
+    <li><a href="../10/d.html">Going Asynchronous</a></li>
+    <li><a href="../10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="../11.html">Jetty Extras</a></li>
+  <li><a href="../99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+<div class="nav-breadcrumbs">
+<ul>
+  <li><a href="../index.html">Unfiltered</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a></li>
+  <li>Silly Store</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#silly-store" name="silly-store" class="anchor"><span class="anchor-link"></span></a>Silly Store</h2>
+<h3><a href="#opening-the-store" name="opening-the-store" class="anchor"><span class="anchor-link"></span></a>Opening the Store</h3>
+<p>Using the request matchers and response functions outlined over the last couple of pages, we have everything we need to build a naive key-value store.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.request._
+import unfiltered.response._
+
+object SillyStore extends unfiltered.filter.Plan {
+  @volatile private var store = Map.empty[String, Array[Byte]]
+  def intent = {
+    case req @ Path(Seg(&quot;record&quot; :: id :: Nil)) =&gt; req match {
+      case GET(_) =&gt;
+        store.get(id).map(ResponseBytes).getOrElse {
+          NotFound ~&gt; ResponseString(&quot;No record: &quot; + id)
+        }
+      case PUT(_) =&gt;
+        SillyStore.synchronized {
+          store = store + (id -&gt; Body.bytes(req))
+        }
+        Created ~&gt; ResponseString(&quot;Created record: &quot; + id)
+      case _ =&gt;
+        MethodNotAllowed ~&gt; ResponseString(&quot;Must be GET or PUT&quot;)
+    }
+  }
+}</code></pre>
+<p>Go ahead and paste that into a <a href="../01.html">console</a>. Then, execute the plan with a server, adjusting the port if your system does not have 8080 available.</p>
+<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.local(8080).plan(SillyStore).run()</code></pre>
+<p>The method <code>local</code>, like <code>anylocal</code>, binds only to the loopback interface, for safety. SillyStore is not quite &ldquo;web-scale&rdquo;.</p>
+<h3><a href="#curling-the-store" name="curling-the-store" class="anchor"><span class="anchor-link"></span></a>Curling the Store</h3>
+<p>The command line utility <a href="http://curl.haxx.se/">cURL</a> is great for testing HTTP servers. First, we&rsquo;ll try to retrieve a record.</p>
+<pre class="prettyprint"><code>curl -i http://127.0.0.1:8080/record/my+file
+</code></pre>
+<p>The <code>-i</code> tells it to print out the response headers. Curl does a GET by default; since there is no record by that or any other name it prints out the 404 response with our error message. We have to PUT something into storage.</p>
+<pre class="prettyprint"><code>echo &quot;Ta daa&quot; | curl -i http://127.0.0.1:8080/record/my+file -T -
+</code></pre>
+<p>Curl&rsquo;s option <code>-T</code> is for uploading files with a PUT, and the hyphen tells it to read the data piped in from echo. Now, we should have better luck with a GET request:</p>
+<pre class="prettyprint"><code>curl -i http://127.0.0.1:8080/record/my+file
+</code></pre>
+<p>That worked, right? We should also be able to replace items:</p>
+<pre class="prettyprint"><code>echo &quot;Ta daa 2&quot; | curl -i http://127.0.0.1:8080/record/my+file -T -
+curl -i http://127.0.0.1:8080/record/my+file
+</code></pre>
+<p>And lastly, test the method error message:</p>
+<pre class="prettyprint"><code>curl -i http://127.0.0.1:8080/record/my+file -X DELETE
+</code></pre>
+<p>405 Method Not Allowed. But it&rsquo;s a shame, really. DELETE support would be easy to add. Why don&rsquo;t you give it a try?</p>
+<div class="nav-next">
+<p><strong>Next:</strong> <a href="../07/00.html">Directives and Validation</a></p>
+</div>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../06/d.html#silly-store">Silly Store</a>
+  <ul>
+    <li><a href="../06/d.html#opening-the-store">Opening the Store</a></li>
+    <li><a href="../06/d.html#curling-the-store">Curling the Store</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2016</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>

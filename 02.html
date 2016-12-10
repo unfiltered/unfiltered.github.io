@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Plans and Intents · Unfiltered</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='website'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.0-beta2
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="01.html">Try Unfiltered</a></li>
+  <li><a href="02.html" class="active">Plans and Intents</a></li>
+  <li><a href="03.html">Bindings and Servers</a></li>
+  <li><a href="04.html">Project Setup</a></li>
+  <li><a href="05.html">Community</a></li>
+  <li><a href="06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="06/a.html">Request Matchers</a></li>
+    <li><a href="06/b.html">Within the Parameters</a></li>
+    <li><a href="06/c.html">Response Functions</a></li>
+    <li><a href="06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="07/a.html">Directive Intent</a></li>
+    <li><a href="07/b.html">Parameters as Directives</a></li>
+    <li><a href="07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="07/d.html">Required Parameters</a></li>
+    <li><a href="07/e.html">Independent Failure</a></li>
+    <li><a href="07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="08/a.html">Planning for Any-thing</a></li>
+    <li><a href="08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="10/a.html">Trying Netty</a></li>
+    <li><a href="10/b.html">Execution and Exceptions</a></li>
+    <li><a href="10/c.html">Chunked Requests</a></li>
+    <li><a href="10/d.html">Going Asynchronous</a></li>
+    <li><a href="10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="11.html">Jetty Extras</a></li>
+  <li><a href="99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="index.html">Unfiltered</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.0-beta2
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="01.html">Try Unfiltered</a></li>
+  <li><a href="02.html" class="active">Plans and Intents</a></li>
+  <li><a href="03.html">Bindings and Servers</a></li>
+  <li><a href="04.html">Project Setup</a></li>
+  <li><a href="05.html">Community</a></li>
+  <li><a href="06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="06/a.html">Request Matchers</a></li>
+    <li><a href="06/b.html">Within the Parameters</a></li>
+    <li><a href="06/c.html">Response Functions</a></li>
+    <li><a href="06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="07/a.html">Directive Intent</a></li>
+    <li><a href="07/b.html">Parameters as Directives</a></li>
+    <li><a href="07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="07/d.html">Required Parameters</a></li>
+    <li><a href="07/e.html">Independent Failure</a></li>
+    <li><a href="07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="08/a.html">Planning for Any-thing</a></li>
+    <li><a href="08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="10/a.html">Trying Netty</a></li>
+    <li><a href="10/b.html">Execution and Exceptions</a></li>
+    <li><a href="10/c.html">Chunked Requests</a></li>
+    <li><a href="10/d.html">Going Asynchronous</a></li>
+    <li><a href="10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="11.html">Jetty Extras</a></li>
+  <li><a href="99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+<div class="nav-breadcrumbs">
+<ul>
+  <li><a href="index.html">Unfiltered</a></li>
+  <li>Plans and Intents</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#plans-and-intents" name="plans-and-intents" class="anchor"><span class="anchor-link"></span></a>Plans and Intents</h2>
+<p>Unfiltered conditionally handles incoming requests using partial functions. From the application&rsquo;s perspective, requests are mapped to code paths by pattern matching. The library uses a particular vocabulary to refer to the agents of this process without ambiguity.</p>
+<ul>
+  <li>An <em>intent</em> is a partial function for matching requests.</li>
+  <li>A <em>plan</em> binds an intent to a particular server interface.</li>
+</ul>
+<p>For example, the <code>unfiltered.filter.Plan</code> trait extends the <code>javax.servlet.Filter</code> interface. It declares an abstract <code>intent</code> method for clients to define the intent partial function.</p>
+<h3><a href="#making-plans-of-intents" name="making-plans-of-intents" class="anchor"><span class="anchor-link"></span></a>Making Plans of Intents</h3>
+<p>Looking back at the example on the previous page, you might wonder where the plan ends and the intent begins.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.request._
+import unfiltered.response._
+val echo = unfiltered.filter.Planify {
+  case Path(Seg(p :: Nil)) =&gt; ResponseString(p)
+}</code></pre>
+<p>In this case a plan is constructed directly from an anonymous partial function—that function is the intent. We can define the same plan in more explicit parts, as is usually necessary in a larger application.</p>
+<pre class="prettyprint"><code class="language-scala">object Echo extends unfiltered.filter.Plan {
+  def intent = {
+    case Path(Seg(p :: Nil)) =&gt; ResponseString(p)
+  }
+}</code></pre>
+<p>Since this kind of plan is an implementation of the servlet filter interface, we can pass it directly to a servlet container.</p>
+<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.anylocal.plan(Echo).run()</code></pre>
+<h3><a href="#passing-on-that" name="passing-on-that" class="anchor"><span class="anchor-link"></span></a>Passing on That</h3>
+<p>Since an intent is a partial function, it may be undefined for a request. In this case the request may be handled by some other intent or it could produce a 404 error from the server.</p>
+<p>Unfiltered also supports an explicit mechanism to specify that a matched request should not be handled by an intent: the <code>Pass</code> object.</p>
+<pre class="prettyprint"><code class="language-scala">object Public extends unfiltered.filter.Plan {
+  def intent = {
+    case Path(Seg(&quot;admin&quot; :: _)) =&gt; Pass
+    case Path(Seg(path :: Nil)) =&gt; myRenderer(path)
+  }
+}</code></pre>
+<p>This intent avoids handling anything under <code>/admin</code> by matching that condition and passing on it. There are other ways to achieve the same ends, but an explicit <code>Pass</code> is often the most straightforward.</p>
+<p>Keep in mind that Scala&rsquo;s partial functions are unaware of Unfiltered&rsquo;s <code>Pass</code> mechanism, so the intent above is in fact <em>defined</em> for the excluded paths. But when attached to a plan, requests that evaluate to <code>Pass</code> are treated the same as those that are undefined.</p>
+<h3><a href="#chaining-intents" name="chaining-intents" class="anchor"><span class="anchor-link"></span></a>Chaining Intents</h3>
+<p>When you want to combine intents within a single plan, use <code>onPass</code>:</p>
+<pre class="prettyprint"><code class="language-scala">object MyPlan extends unfiltered.filter.Plan {
+  def intent = publicIntent.onPass(privateIntent)
+
+  val publicIntent = unfiltered.filter.Intent { ??? }
+  val privateIntent = unfiltered.filter.Intent { ??? }
+}</code></pre>
+<p>The <code>onPass</code> method is defined implicitly for <code>PartialFunction</code> with the import of the <code>unfiltered.response._</code> package. It works like <code>orElse</code> but is aware of the <code>Pass</code> object and it&rsquo;s optimized to avoid unnecessary reevaluation of pattern guards.</p>
+<div class="nav-next">
+<p><strong>Next:</strong> <a href="03.html">Bindings and Servers</a></p>
+</div>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="02.html#plans-and-intents">Plans and Intents</a>
+  <ul>
+    <li><a href="02.html#making-plans-of-intents">Making Plans of Intents</a></li>
+    <li><a href="02.html#passing-on-that">Passing on That</a></li>
+    <li><a href="02.html#chaining-intents">Chaining Intents</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2016</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="js/magellan.js"></script>
+
+<style type="text/css">@import "lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>

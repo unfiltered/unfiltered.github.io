@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Directive Intent · Unfiltered</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='website'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.0-beta2
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../01.html">Try Unfiltered</a></li>
+  <li><a href="../02.html">Plans and Intents</a></li>
+  <li><a href="../03.html">Bindings and Servers</a></li>
+  <li><a href="../04.html">Project Setup</a></li>
+  <li><a href="../05.html">Community</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="../06/a.html">Request Matchers</a></li>
+    <li><a href="../06/b.html">Within the Parameters</a></li>
+    <li><a href="../06/c.html">Response Functions</a></li>
+    <li><a href="../06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="../07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="../07/a.html" class="active">Directive Intent</a></li>
+    <li><a href="../07/b.html">Parameters as Directives</a></li>
+    <li><a href="../07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="../07/d.html">Required Parameters</a></li>
+    <li><a href="../07/e.html">Independent Failure</a></li>
+    <li><a href="../07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="../08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="../08/a.html">Planning for Any-thing</a></li>
+    <li><a href="../08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="../09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="../09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="../09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="../10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="../10/a.html">Trying Netty</a></li>
+    <li><a href="../10/b.html">Execution and Exceptions</a></li>
+    <li><a href="../10/c.html">Chunked Requests</a></li>
+    <li><a href="../10/d.html">Going Asynchronous</a></li>
+    <li><a href="../10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="../11.html">Jetty Extras</a></li>
+  <li><a href="../99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../index.html">Unfiltered</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.0-beta2
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../01.html">Try Unfiltered</a></li>
+  <li><a href="../02.html">Plans and Intents</a></li>
+  <li><a href="../03.html">Bindings and Servers</a></li>
+  <li><a href="../04.html">Project Setup</a></li>
+  <li><a href="../05.html">Community</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="../06/a.html">Request Matchers</a></li>
+    <li><a href="../06/b.html">Within the Parameters</a></li>
+    <li><a href="../06/c.html">Response Functions</a></li>
+    <li><a href="../06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="../07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="../07/a.html" class="active">Directive Intent</a></li>
+    <li><a href="../07/b.html">Parameters as Directives</a></li>
+    <li><a href="../07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="../07/d.html">Required Parameters</a></li>
+    <li><a href="../07/e.html">Independent Failure</a></li>
+    <li><a href="../07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="../08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="../08/a.html">Planning for Any-thing</a></li>
+    <li><a href="../08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="../09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="../09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="../09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="../10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="../10/a.html">Trying Netty</a></li>
+    <li><a href="../10/b.html">Execution and Exceptions</a></li>
+    <li><a href="../10/c.html">Chunked Requests</a></li>
+    <li><a href="../10/d.html">Going Asynchronous</a></li>
+    <li><a href="../10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="../11.html">Jetty Extras</a></li>
+  <li><a href="../99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+<div class="nav-breadcrumbs">
+<ul>
+  <li><a href="../index.html">Unfiltered</a></li>
+  <li><a href="../07/00.html">Directives and Validation</a></li>
+  <li>Directive Intent</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#directive-intent" name="directive-intent" class="anchor"><span class="anchor-link"></span></a>Directive Intent</h2>
+<p>Within an Unfiltered plan, an intent function maps from request objects to response functions. With directives, you define a partial function mapping from requests to a <code>Result</code>. We compose this function with another, which produces the standard intent function understood by Unfiltered.</p>
+<blockquote>
+  <p>Directives are an example of an Unfiltered <a href="../08/b.html">kit</a>, set of tools providing a higher level of abstraction over the core library.</p>
+</blockquote>
+<h3><a href="#selective-enforcement" name="selective-enforcement" class="anchor"><span class="anchor-link"></span></a>Selective enforcement</h3>
+<p>You can define a directive function using familiar request extractors. Let&rsquo;s start with a raw intent function.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.request._
+import unfiltered.response._
+import unfiltered.jetty.SocketPortBinding
+
+val binding = SocketPortBinding(host = &quot;localhost&quot;, port = 8080)
+
+val Simple = unfiltered.filter.Planify {
+  case Path(&quot;/&quot;) &amp; Accepts.Json(_) =&gt;
+    JsonContent ~&gt; ResponseString(&quot;&quot;&quot;{ &quot;response&quot;: &quot;Ok&quot; }&quot;&quot;&quot;)
+}
+unfiltered.jetty.Server.portBinding(binding).plan(Simple).run()</code></pre>
+<p>You can use curl to inspect the different responses:</p>
+<pre class="prettyprint"><code class="language-sh">curl -v http://localhost:8080/ -H &quot;Accept: application/json&quot;
+curl -v http://localhost:8080/
+</code></pre>
+<p>The 404 response page to the second request is not so great. With directives, we&rsquo;ll do better than that <em>by default</em>.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.directives._, Directives._
+
+val Smart = unfiltered.filter.Planify { Directive.Intent {
+  case Path(&quot;/&quot;) =&gt;
+    for {
+      _ &lt;- Accepts.Json
+    } yield JsonContent ~&gt; ResponseString(&quot;&quot;&quot;{ &quot;response&quot;: &quot;Ok&quot; }&quot;&quot;&quot;)
+} }
+unfiltered.jetty.Server.portBinding(binding).plan(Smart).run()</code></pre>
+<p>And with that you&rsquo;ll see a 406 Not Acceptable response when appropriate.</p>
+<p>Directives results are typically, but not necessarily, defined in a single for expression. In the expression above we discard the result value of the <code>Accepts.Json</code> directive, as we did previously with the extractor, and map it to our dummy response function.</p>
+<p>The 406 error response is produced by the directive itself, encapsulating behavior that can be used everywhere. What if you want different error behavior? Make your own directive! (Seriously, you&rsquo;ll see how on the next page.)</p>
+<h3><a href="#one-true-path" name="one-true-path" class="anchor"><span class="anchor-link"></span></a>One true path</h3>
+<p>You may have noticed that directives transfer (and enrich) routing logic from extractors. If your extractors are reduced to the task of matching against paths alone, you can even eliminate those.</p>
+<pre class="prettyprint"><code class="language-scala">val Sweet = unfiltered.filter.Planify { Directive.Intent.Path {
+  case &quot;/&quot; =&gt;
+    for {
+      _ &lt;- Accepts.Json
+    } yield JsonContent ~&gt; ResponseString(&quot;&quot;&quot;{ &quot;response&quot;: &quot;Ok&quot; }&quot;&quot;&quot;)
+} }
+unfiltered.jetty.Server.portBinding(binding).plan(Sweet).run()</code></pre>
+<p>It looks pretty different, but remember that here still composes to a standard Unfiltered intent function.</p>
+<div class="nav-next">
+<p><strong>Next:</strong> <a href="../07/b.html">Parameters as Directives</a></p>
+</div>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../07/a.html#directive-intent">Directive Intent</a>
+  <ul>
+    <li><a href="../07/a.html#selective-enforcement">Selective enforcement</a></li>
+    <li><a href="../07/a.html#one-true-path">One true path</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2016</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>
