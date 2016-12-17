@@ -178,7 +178,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="page-content row">
 <div class="small-12 large-9 column" id="docs">
 <h2><a href="#independent-failure" name="independent-failure" class="anchor"><span class="anchor-link"></span></a>Independent Failure</h2>
-<p>A request that is mapped through a directive can produce either a failure or success response. Usually, this works the way you want. When a <code>PUT</code> request is received for an endpoint that only supports <code>POST</code>, the service can respond with a <code>405 MethodNotAllowed</code> status without inspecting parameters any request parameters.</p>
+<p>A request that is mapped through a directive can produce either a failure or success response. Usually, this works the way you want. When a <code>PUT</code> request is received for an endpoint that only supports <code>POST</code>, the service can respond with a <code>405 MethodNotAllowed</code> status without inspecting any request parameters.</p>
 <p>But among the request parameters themselves, it may be desirable to respond with multiple error messages when there are multiple parameters in error. This can be accomplished by combining directives into a single directive which knows how to bundle the error responses.</p>
 <h3><a href="#normalizing-error-responses" name="normalizing-error-responses" class="anchor"><span class="anchor-link"></span></a>Normalizing Error Responses</h3>
 <p>Even if you don&rsquo;t intend to bundle errors right away, it&rsquo;s a good idea to generate error responses in a consistent way. This allows you to factor out the status code generation and to put error messages in context. One way to do this is with a case class.</p>
