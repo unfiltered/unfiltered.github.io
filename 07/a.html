@@ -178,10 +178,8 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="page-content row">
 <div class="small-12 large-9 column" id="docs">
 <h2><a href="#directive-intent" name="directive-intent" class="anchor"><span class="anchor-link"></span></a>Directive Intent</h2>
-<p>Within an Unfiltered plan, an intent function maps from request objects to response functions. With directives, you define a partial function mapping from requests to a <code>Result</code>. We compose this function with another, which produces the standard intent function understood by Unfiltered.</p>
-<blockquote>
-  <p>Directives are an example of an Unfiltered <a href="../08/b.html">kit</a>, set of tools providing a higher level of abstraction over the core library.</p>
-</blockquote>
+<p>Within an Unfiltered plan, an intent function maps from request objects to response functions. With directives, you define a partial function mapping from requests to a <code>Result</code>. We compose this function with another, which produces the standard intent function understood by Unfiltered.</p><div class="callout note "><div class="callout-title">Note</div>
+<p>Directives are an example of an Unfiltered <a href="../08/b.html">kit</a>, set of tools providing a higher level of abstraction over the core library.</p></div>
 <h3><a href="#selective-enforcement" name="selective-enforcement" class="anchor"><span class="anchor-link"></span></a>Selective enforcement</h3>
 <p>You can define a directive function using familiar request extractors. Let&rsquo;s start with a raw intent function.</p>
 <pre class="prettyprint"><code class="language-scala">import unfiltered.request._

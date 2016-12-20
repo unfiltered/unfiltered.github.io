@@ -201,10 +201,8 @@ unfiltered.jetty.Server.portBinding(binding).plan(
       )
   } }
 ).run()</code></pre>
-<p>In the example above we explicitly reference and apply a single interpreter to parameters &ldquo;a&rdquo; and &ldquo;b&rdquo;, responding with their sum.</p>
-<blockquote>
-  <p>Unclear on the summing step? Values <code>a</code> and <code>b</code> are both of the  iterable type <code>Option[Int]</code>. We join these with <code>++</code> forming a  sequence of integers that could be as long as 2 or as short as 0,  depending on the input. The <code>sum</code> method on this sequence does what  you&rsquo;d expect, and finally we join with a string.</p>
-</blockquote>
+<p>In the example above we explicitly reference and apply a single interpreter to parameters &ldquo;a&rdquo; and &ldquo;b&rdquo;, responding with their sum.</p><div class="callout note "><div class="callout-title">Note</div>
+<p>Unclear on the summing step? Values <code>a</code> and <code>b</code> are both of the iterable type <code>Option[Int]</code>. We join these with <code>++</code> forming a sequence of integers that could be as long as 2 or as short as 0, depending on the input. The <code>sum</code> method on this sequence does what you&rsquo;d expect, and finally we join with a string.</p></div>
 <h3><a href="#implicit-interpreters" name="implicit-interpreters" class="anchor"><span class="anchor-link"></span></a>Implicit Interpreters</h3>
 <p>Referencing an interpreter was fairly tidy operation, but as we&rsquo;ll be using interpreters often and in different applications, naming and recalling names for various types could become tedious. Let&rsquo;s try it with an implicit.</p>
 <pre class="prettyprint"><code class="language-scala">implicit val implyIntValue =

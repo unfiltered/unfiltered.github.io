@@ -197,10 +197,8 @@ object AsyncPlan extends unfiltered.filter.async.Plan  {
   }
 }
 //then you can register this plan with jetty as usual
-unfiltered.jetty.Server.http(8080).plan(AsyncPlan).run()</code></pre>
-<blockquote>
-  <p><strong>Note:</strong> Alternately, <code>local(8080)</code> binds to the loopback network  interface only.</p>
-</blockquote>
+unfiltered.jetty.Server.http(8080).plan(AsyncPlan).run()</code></pre><div class="callout note "><div class="callout-title">Note</div>
+<p>Alternately, <code>local(8080)</code> binds to the loopback network interface only.</p></div>
 <h4><a href="#netty-channel-handlers-unfiltered-netty-" name="netty-channel-handlers-unfiltered-netty-" class="anchor"><span class="anchor-link"></span></a>Netty Channel Handlers (unfiltered-netty)</h4>
 <p>Netty defines <em>channels</em> for network I/O and implements them using Java&rsquo;s Native I/O (NIO) interface. Its plan traits are upstream channel handlers, and the module defines intents and plans in separate <code>cycle</code> and <code>async</code> subpackages, the former for traditional request-response cycles and the latter for open-ended interaction.</p>
 <h3><a href="#server-modules" name="server-modules" class="anchor"><span class="anchor-link"></span></a>Server Modules</h3>

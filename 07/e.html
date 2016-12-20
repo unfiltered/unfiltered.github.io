@@ -201,10 +201,8 @@ case class OneBadParam(msg: String) extends Responder[Any] {
   msgs =&gt;
     BadRequest ~&gt; ResponseString(msgs.mkString(&quot;&quot;,&quot;\n&quot;,&quot;\n&quot;))
 )</code></pre>
-<p>Instances of this class are still defined for a single error message <code>msg</code>, but they know how to format a response for multiple messages of the same type. This allows the toolkit to combine many BadParam instances into a single error response, using the response function defined on any one of the instances.</p>
-<blockquote>
-  <p>The type system guarantees that error messages are of the same type  and that any instance can produce a response from them, but it is  not guaranteed which instance&rsquo;s error handler will be used to  produce the error response. You should use the same case class, or  the same error handling function, for all of your response error  instances.</p>
-</blockquote>
+<p>Instances of this class are still defined for a single error message <code>msg</code>, but they know how to format a response for multiple messages of the same type. This allows the toolkit to combine many BadParam instances into a single error response, using the response function defined on any one of the instances.</p><div class="callout note "><div class="callout-title">Note</div>
+<p>The type system guarantees that error messages are of the same type and that any instance can produce a response from them, but it is not guaranteed which instance&rsquo;s error handler will be used to produce the error response. You should use the same case class, or the same error handling function, for all of your response error instances.</p></div>
 <p>We can redefine &ldquo;required&rdquo; with this improved error responder.</p>
 <pre class="prettyprint"><code class="language-scala">implicit def required[T] = data.Requiring[T].fail(name =&gt;
   BadParam(name + &quot; is missing&quot;)

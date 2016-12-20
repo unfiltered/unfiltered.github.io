@@ -210,10 +210,8 @@ unfiltered.jetty.Server.portBinding(binding).plan(
       } yield ResponseString(in.toString)
   } }
 ).run()</code></pre>
-<p>By testing this service you&rsquo;ll find that all requests to the root path are accepted, and that the <code>in</code> value is bound to an <code>Option[Int]</code>. If an <code>in</code> request parameter is not present or not a valid int, the value is <code>None</code>. This is a directive, but it&rsquo;s still one that always produceses a <code>Success</code> result.</p>
-<blockquote>
-  <p>What about repeated parameters? The object <code>data.as.Int</code> is an  interpreter from <code>String</code> to <code>Int</code>, but in HTTP we model parameter  values as a sequence of strings. This gap is bridged by another  interpreter <code>data.as.String</code>, which chooses the first in the  sequence. It&rsquo;s applied implicitly when needed.</p>
-</blockquote>
+<p>By testing this service you&rsquo;ll find that all requests to the root path are accepted, and that the <code>in</code> value is bound to an <code>Option[Int]</code>. If an <code>in</code> request parameter is not present or not a valid int, the value is <code>None</code>. This is a directive, but it&rsquo;s still one that always produceses a <code>Success</code> result.</p><div class="callout note "><div class="callout-title">Note</div>
+<p>What about repeated parameters? The object <code>data.as.Int</code> is an interpreter from <code>String</code> to <code>Int</code>, but in HTTP we model parameter values as a sequence of strings. This gap is bridged by another interpreter <code>data.as.String</code>, which chooses the first in the sequence. It&rsquo;s applied implicitly when needed.</p></div>
 <p>We can transform an interpreter that ignores failed interpretation into one that produces a failure response by passing an error handler to its <code>fail</code> method.</p>
 <pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
   unfiltered.filter.Planify { Directive.Intent {
