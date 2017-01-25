@@ -29,7 +29,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.9.0-beta2
+0.9.0
 </div>
 </div>
 <div class="nav-toc">
@@ -107,7 +107,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.9.0-beta2
+0.9.0
 </div>
 </div>
 <div class="nav-toc">
@@ -201,7 +201,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 </code></pre>
 <p>Even with no parameters, the directive succeeds with an empty sequence. Since it&rsquo;s not establishing control flow, we could have accessed it just as easily through the <a href="../06/b.html">Params map</a>. But typically, we do have requirements on our input.</p>
 <h3><a href="#im-thinking-of-a-number" name="im-thinking-of-a-number" class="anchor"><span class="anchor-link"></span></a>I&rsquo;m thinking of a Number</h3>
-<p>Things get more interesting when require parameters to be in a particular format. From here on out, we&rsquo;ll be working with <em>interpreters</em> in the <a href="https://oss.sonatype.org/service/local/repositories/releases/archive/ws/unfiltered/unfiltered-all_2.12/0.9.0-beta2/unfiltered-all_2.12-0.9.0-beta2-javadoc.jar/!/unfiltered/directives/data/index.html"><code>unfiltered.directives.data</code></a> package. Interpreters define abstract operations on data; we can produce directives for a particular request parameter with <code>named</code>.</p>
+<p>Things get more interesting when require parameters to be in a particular format. From here on out, we&rsquo;ll be working with <em>interpreters</em> in the <a href="https://oss.sonatype.org/service/local/repositories/releases/archive/ws/unfiltered/unfiltered-all_2.12/0.9.0/unfiltered-all_2.12-0.9.0-javadoc.jar/!/unfiltered/directives/data/index.html"><code>unfiltered.directives.data</code></a> package. Interpreters define abstract operations on data; we can produce directives for a particular request parameter with <code>named</code>.</p>
 <pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
   unfiltered.filter.Planify { Directive.Intent {
     case Path(&quot;/&quot;) =&gt;
@@ -282,7 +282,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 
 <!--
 <div class="copyright">
-<span class="text">&copy; 2016</span>
+<span class="text">&copy; 2017</span>
 <a href="https://www.example.com" class="logo">logo</a>
 </div>
 -->
