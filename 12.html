@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-<title>Bindings and Servers · Unfiltered</title>
+<title>ScalaTest · Unfiltered</title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content='website'/>
@@ -36,7 +36,7 @@
 <ul>
   <li><a href="01.html">Try Unfiltered</a></li>
   <li><a href="02.html">Plans and Intents</a></li>
-  <li><a href="03.html" class="active">Bindings and Servers</a></li>
+  <li><a href="03.html">Bindings and Servers</a></li>
   <li><a href="04.html">Project Setup</a></li>
   <li><a href="05.html">Community</a></li>
   <li><a href="06/00.html">Matching and Responding</a>
@@ -75,7 +75,7 @@
     <li><a href="10/e.html">Asyncrazy Temperature Server</a></li>
   </ul></li>
   <li><a href="11.html">Jetty Extras</a></li>
-  <li><a href="12.html">ScalaTest</a></li>
+  <li><a href="12.html" class="active">ScalaTest</a></li>
   <li><a href="99.html">Who&rsquo;s Using Unfiltered?</a></li>
 </ul>
 </div>
@@ -115,7 +115,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <ul>
   <li><a href="01.html">Try Unfiltered</a></li>
   <li><a href="02.html">Plans and Intents</a></li>
-  <li><a href="03.html" class="active">Bindings and Servers</a></li>
+  <li><a href="03.html">Bindings and Servers</a></li>
   <li><a href="04.html">Project Setup</a></li>
   <li><a href="05.html">Community</a></li>
   <li><a href="06/00.html">Matching and Responding</a>
@@ -154,7 +154,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
     <li><a href="10/e.html">Asyncrazy Temperature Server</a></li>
   </ul></li>
   <li><a href="11.html">Jetty Extras</a></li>
-  <li><a href="12.html">ScalaTest</a></li>
+  <li><a href="12.html" class="active">ScalaTest</a></li>
   <li><a href="99.html">Who&rsquo;s Using Unfiltered?</a></li>
 </ul>
 </div>
@@ -170,7 +170,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="nav-breadcrumbs">
 <ul>
   <li><a href="index.html">Unfiltered</a></li>
-  <li>Bindings and Servers</li>
+  <li>ScalaTest</li>
 </ul>
 </div>
 </div>
@@ -178,53 +178,46 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 
 <div class="page-content row">
 <div class="small-12 large-9 column" id="docs">
-<h2><a href="#bindings-and-servers" name="bindings-and-servers" class="anchor"><span class="anchor-link"></span></a>Bindings and Servers</h2>
-<p>The core module unfiltered-library does not depend on or reference any particular server backend. It defines internal abstractions for requests and responses, with higher level abstractions on top.</p>
-<p>An application or library that depends only on the core library could be used with any backend that Unfiltered supports, but in most cases it will depend on a <em>binding</em> module.</p>
-<h3><a href="#binding-modules" name="binding-modules" class="anchor"><span class="anchor-link"></span></a>Binding Modules</h3>
-<p>These bind Unfiltered&rsquo;s generic request and response interfaces to a given implementation, as well as intent types and plan traits.</p>
-<h4><a href="#servlet-filters-unfiltered-filter-" name="servlet-filters-unfiltered-filter-" class="anchor"><span class="anchor-link"></span></a>Servlet Filters (unfiltered-filter)</h4>
-<p>The Java Servlet API enables you to write applications that run on servlet containers, anything from Tomcat to Google App Engine. Its plan trait is a servlet filter.</p>
-<h4><a href="#asynchronous-servlet-filters-unfiltered-filter-async-" name="asynchronous-servlet-filters-unfiltered-filter-async-" class="anchor"><span class="anchor-link"></span></a>Asynchronous Servlet Filters (unfiltered-filter-async)</h4>
-<p>Asynchronous Servlet Filters are using jetty-continuation under the hood which should provide a general purpose API that will work asynchronously on any servlet-3.0 container, as well as on Jetty 6, 7 or 8 (Continuations will also work in blocking mode with any servlet 2.5 container.)</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.request.{Path =&gt; UFPath, _}
-import unfiltered.response._
+<h2><a href="#scalatest" name="scalatest" class="anchor"><span class="anchor-link"></span></a>ScalaTest</h2>
+<p>Helps creating feature tests for Unfiltered apps with scalatest.</p>
+<h3><a href="#usage" name="usage" class="anchor"><span class="anchor-link"></span></a>Usage</h3>
+<p>Here is a test written using this support.</p>
+<pre class="prettyprint"><code class="language-scala">class ExampleFeature extends FeatureSpec with unfiltered.scalatest.jetty.Served
+                                              with unfiltered.scalatest.Hosted
+                                              with GivenWhenThen with Matchers {
 
-object AsyncPlan extends unfiltered.filter.async.Plan  {
-  def intent = {
-    case GET(UFPath(&quot;/pass&quot;)) =&gt; Pass
-    case req@GET(UFPath(&quot;/async&quot;)) =&gt;
-      //&quot;respond&quot; is usually called from an asynchronous callback handler
-      req.respond(ResponseString(&quot;test&quot;) ~&gt; Ok)
+  def setup = {
+    _.plan(new App)
   }
-}
-//then you can register this plan with jetty as usual
-unfiltered.jetty.Server.http(8080).plan(AsyncPlan).run()</code></pre><div class="callout note "><div class="callout-title">Note</div>
-<p>Alternately, <code>local(8080)</code> binds to the loopback network interface only.</p></div>
-<h4><a href="#netty-channel-handlers-unfiltered-netty-" name="netty-channel-handlers-unfiltered-netty-" class="anchor"><span class="anchor-link"></span></a>Netty Channel Handlers (unfiltered-netty)</h4>
-<p>Netty defines <em>channels</em> for network I/O and implements them using Java&rsquo;s Native I/O (NIO) interface. Its plan traits are upstream channel handlers, and the module defines intents and plans in separate <code>cycle</code> and <code>async</code> subpackages, the former for traditional request-response cycles and the latter for open-ended interaction.</p>
-<h3><a href="#server-modules" name="server-modules" class="anchor"><span class="anchor-link"></span></a>Server Modules</h3>
-<p>Server modules define runnable servers to execute your plans. They are entirely optional. Applications can instead use Unfiltered&rsquo;s binding modules with external containers, or they can interface directly with server libraries.</p>
-<h4><a href="#unfiltered-jetty" name="unfiltered-jetty" class="anchor"><span class="anchor-link"></span></a>unfiltered-jetty</h4>
-<p>Includes builders for Jetty servers that implement the HTTP and HTTPS protocols. With this server it is particularly easy to serve a web browser interface for a local process. Unfiltered even gives you a shortcut to open a browser window, if the user is on a 1.6+ JVM that supports it.</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.response._
-val hello = unfiltered.filter.Planify {
-  case _ =&gt; ResponseString(&quot;hello world&quot;)
-}
-unfiltered.jetty.Server.anylocal.plan(hello).run { s =&gt;
-  unfiltered.util.Browser.open(
-    s.portBindings.head.url
-  )
+
+  feature(&quot;rest app&quot;) {
+    scenario(&quot;should validate integers&quot;) {
+      Given(&quot;an invalid int and a valid palindrome as parameters&quot;)
+        val params = Map(&quot;int&quot; -&gt; &quot;x&quot;, &quot;palindrome&quot; -&gt; &quot;twistsiwt&quot;)
+      When(&quot;parameters are posted&quot;)
+        val response = httpx(req(host &lt;&lt;? params))
+      Then(&quot;status is BAD Request&quot;)
+        response.code should be(400)
+      And(&quot;&quot;&quot;body includes &quot;x is not an integer&quot; &quot;&quot;&quot;)
+        response.as_string should include(&quot;x is not an integer&quot;)
+    }
+
+    scenario(&quot;should validate palindrome&quot;) {
+      Given(&quot;a valid int and an invalid palindrome as parameters&quot;)
+        val params = Map(&quot;int&quot; -&gt; &quot;1&quot;, &quot;palindrome&quot; -&gt; &quot;sweets&quot;)
+      When(&quot;parameters are posted&quot;)
+        val response = httpx(req(host &lt;&lt;? params))
+      Then(&quot;status is BAD Request&quot;)
+        response.code should be(400)
+      And(&quot;&quot;&quot;body includes &quot;sweets is not a palindrome&quot; &quot;&quot;&quot;)
+        response.as_string should include(&quot;sweets is not a palindrome&quot;)
+    }
+  }
 }</code></pre>
-<h4><a href="#unfiltered-netty-server" name="unfiltered-netty-server" class="anchor"><span class="anchor-link"></span></a>unfiltered-netty-server</h4>
-<p>Bootstraps and binds a server for your channel handlers.</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.response._
-val hello = unfiltered.netty.cycle.Planify {
-  case _ =&gt; ResponseString(&quot;hello world&quot;)
-}
-unfiltered.netty.Server.http(8080).plan(hello).run()</code></pre>
+<h3><a href="#limitations" name="limitations" class="anchor"><span class="anchor-link"></span></a>Limitations</h3>
+<p>Only Feature type scalatests are supported.</p>
 <div class="nav-next">
-<p><strong>Next:</strong> <a href="04.html">Project Setup</a></p>
+<p><strong>Next:</strong> <a href="99.html">Who&rsquo;s Using Unfiltered?</a></p>
 </div>
 </div>
 <div class="large-3 show-for-large column" data-sticky-container>
@@ -233,10 +226,10 @@ unfiltered.netty.Server.http(8080).plan(hello).run()</code></pre>
 <div class="nav-title">On this page:</div>
 <div class="nav-toc">
 <ul>
-  <li><a href="03.html#bindings-and-servers">Bindings and Servers</a>
+  <li><a href="12.html#scalatest">ScalaTest</a>
   <ul>
-    <li><a href="03.html#binding-modules">Binding Modules</a></li>
-    <li><a href="03.html#server-modules">Server Modules</a></li>
+    <li><a href="12.html#usage">Usage</a></li>
+    <li><a href="12.html#limitations">Limitations</a></li>
   </ul></li>
 </ul>
 </div>
