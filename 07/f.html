@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Interpreters of Your Own Design · Unfiltered</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='website'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.1
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../01.html">Try Unfiltered</a></li>
+  <li><a href="../02.html">Plans and Intents</a></li>
+  <li><a href="../03.html">Bindings and Servers</a></li>
+  <li><a href="../04.html">Project Setup</a></li>
+  <li><a href="../05.html">Community</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="../06/a.html">Request Matchers</a></li>
+    <li><a href="../06/b.html">Within the Parameters</a></li>
+    <li><a href="../06/c.html">Response Functions</a></li>
+    <li><a href="../06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="../07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="../07/a.html">Directive Intent</a></li>
+    <li><a href="../07/b.html">Parameters as Directives</a></li>
+    <li><a href="../07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="../07/d.html">Required Parameters</a></li>
+    <li><a href="../07/e.html">Independent Failure</a></li>
+    <li><a href="../07/f.html" class="active">Interpreters of Your Own Design</a></li>
+    <li><a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="../08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="../08/a.html">Planning for Any-thing</a></li>
+    <li><a href="../08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="../09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="../09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="../09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="../10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="../10/a.html">Trying Netty</a></li>
+    <li><a href="../10/b.html">Execution and Exceptions</a></li>
+    <li><a href="../10/c.html">Chunked Requests</a></li>
+    <li><a href="../10/d.html">Going Asynchronous</a></li>
+    <li><a href="../10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="../11.html">Jetty Extras</a></li>
+  <li><a href="../12.html">ScalaTest</a></li>
+  <li><a href="../99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../index.html">Unfiltered</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.1
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../01.html">Try Unfiltered</a></li>
+  <li><a href="../02.html">Plans and Intents</a></li>
+  <li><a href="../03.html">Bindings and Servers</a></li>
+  <li><a href="../04.html">Project Setup</a></li>
+  <li><a href="../05.html">Community</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="../06/a.html">Request Matchers</a></li>
+    <li><a href="../06/b.html">Within the Parameters</a></li>
+    <li><a href="../06/c.html">Response Functions</a></li>
+    <li><a href="../06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="../07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="../07/a.html">Directive Intent</a></li>
+    <li><a href="../07/b.html">Parameters as Directives</a></li>
+    <li><a href="../07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="../07/d.html">Required Parameters</a></li>
+    <li><a href="../07/e.html">Independent Failure</a></li>
+    <li><a href="../07/f.html" class="active">Interpreters of Your Own Design</a></li>
+    <li><a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="../08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="../08/a.html">Planning for Any-thing</a></li>
+    <li><a href="../08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="../09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="../09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="../09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="../10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="../10/a.html">Trying Netty</a></li>
+    <li><a href="../10/b.html">Execution and Exceptions</a></li>
+    <li><a href="../10/c.html">Chunked Requests</a></li>
+    <li><a href="../10/d.html">Going Asynchronous</a></li>
+    <li><a href="../10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="../11.html">Jetty Extras</a></li>
+  <li><a href="../12.html">ScalaTest</a></li>
+  <li><a href="../99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+<div class="nav-breadcrumbs">
+<ul>
+  <li><a href="../index.html">Unfiltered</a></li>
+  <li><a href="../07/00.html">Directives and Validation</a></li>
+  <li>Interpreters of Your Own Design</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#interpreters-of-your-own-design" name="interpreters-of-your-own-design" class="anchor"><span class="anchor-link"></span></a>Interpreters of Your Own Design</h2>
+<p>Unfiltered comes with a small number of interpreters for standard Scala types. We may have left out the one you want (send a pull request), or perhaps you&rsquo;d like to define interpreters for a type specific to your own application. This is in fact a very good idea!</p>
+<h3><a href="#conditional-interpreters" name="conditional-interpreters" class="anchor"><span class="anchor-link"></span></a>Conditional Interpreters</h3>
+<p>A simple way to augment an interpreter is to require a condition for which it is valid. For example, in your application valid identifiers might be non-negative, non-zero integers up to a certain size. Another application might permit a certain set of characters as identifiers.</p>
+<p>Rather than attempting to anticipate all the ways you might like to constrain input parameters, Unfiltered leaves it to you to define interpreters using the Scala language. Here, we&rsquo;ll define a simple one that accepts only even integers.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.request._
+import unfiltered.response._
+import unfiltered.directives._, Directives._
+
+def badParam(msg: String) =
+  BadRequest ~&gt; ResponseString(msg)
+
+val evenInt = data.Conditional[Int](_ % 2 == 0).fail(
+  (k, v) =&gt; badParam(&quot;not even: &quot; + v)
+)</code></pre>
+<p>As a conditional interpreter of integer, <code>evenInt</code> inputs and outputs an integer, failing with an error if it doesn&rsquo;t satisfy the condition. To make it work seamlessly with request parameters we may define an implicit integer interpreter.</p>
+<pre class="prettyprint"><code class="language-scala">implicit val intValue =
+  data.as.String ~&gt; data.as.Int.fail(
+    (k, v) =&gt; badParam(&quot;not an int: &quot; + v)
+  )</code></pre>
+<p>Then it&rsquo;s just a matter of using <code>evenInt</code> like any other interpreter.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.jetty.SocketPortBinding
+
+val binding = SocketPortBinding(host = &quot;localhost&quot;, port = 8080)
+
+unfiltered.jetty.Server.portBinding(binding).plan(
+  unfiltered.filter.Planify { Directive.Intent {
+    case Path(&quot;/&quot;) =&gt;
+      for {
+        even &lt;- evenInt named &quot;even&quot;
+      } yield ResponseString(
+        even + &quot;\n&quot;
+      )
+  } }
+).run()</code></pre>
+<h3><a href="#fallible-interpreters" name="fallible-interpreters" class="anchor"><span class="anchor-link"></span></a>Fallible Interpreters</h3>
+<p>Conditional interpreters are great for adding application-specific constraints to existing interpreters, but often you&rsquo;ll need to create interpreters for your own types. These are known as <em>fallible</em> interpreters, under the assumption that any conversion may fail.</p>
+<p>You can make a fallible interpreter to any type. We&rsquo;ll demonstrate with a simple typed data store.</p>
+<pre class="prettyprint"><code class="language-scala">case class Tool(name: String)
+val toolStore = Map(
+  1 -&gt; Tool(&quot;Rock&quot;),
+  2 -&gt; Tool(&quot;Paper&quot;),
+  3 -&gt; Tool(&quot;Scissors&quot;)
+)
+
+val asTool = data.Fallible[Int,Tool](toolStore.get)
+
+implicit def implyTool =
+  data.as.String ~&gt; data.as.Int ~&gt; asTool.fail(
+    (k, v) =&gt; badParam(s&quot;&#39;$v&#39; is not a valid tool identifier&quot;)
+  )</code></pre>
+<p>The <code>data.Fallible</code> case class takes a function from its input type to an option of its output type; <code>Map#get</code> fits the bill perfectly. Then we defined a complete, error-capable interpreter so that it&rsquo;s easy and clean to turn input parameters into tools.</p>
+<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
+  unfiltered.filter.Planify { Directive.Intent {
+    case Path(&quot;/&quot;) =&gt;
+      for {
+        tool &lt;- data.as.Option[Tool] named &quot;id&quot;
+      } yield ResponseString(
+        tool + &quot;\n&quot;
+      )
+  } }
+).run()</code></pre>
+<p>Let&rsquo;s see how it works:</p>
+<pre class="prettyprint"><code class="language-sh">curl http://127.0.0.1:8080/  -d id=3
+Some(Tool(Scissors))
+</code></pre>
+<p>With a parameter directive you can interpret the input into any type you like. We used an in-memory map, but it could just as easily be an entity loaded from external storage.</p>
+<div class="nav-next">
+<p><strong>Next:</strong> <a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></p>
+</div>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../07/f.html#interpreters-of-your-own-design">Interpreters of Your Own Design</a>
+  <ul>
+    <li><a href="../07/f.html#conditional-interpreters">Conditional Interpreters</a></li>
+    <li><a href="../07/f.html#fallible-interpreters">Fallible Interpreters</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2017</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>

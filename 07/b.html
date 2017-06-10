@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Parameters as Directives · Unfiltered</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='website'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.1
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../01.html">Try Unfiltered</a></li>
+  <li><a href="../02.html">Plans and Intents</a></li>
+  <li><a href="../03.html">Bindings and Servers</a></li>
+  <li><a href="../04.html">Project Setup</a></li>
+  <li><a href="../05.html">Community</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="../06/a.html">Request Matchers</a></li>
+    <li><a href="../06/b.html">Within the Parameters</a></li>
+    <li><a href="../06/c.html">Response Functions</a></li>
+    <li><a href="../06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="../07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="../07/a.html">Directive Intent</a></li>
+    <li><a href="../07/b.html" class="active">Parameters as Directives</a></li>
+    <li><a href="../07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="../07/d.html">Required Parameters</a></li>
+    <li><a href="../07/e.html">Independent Failure</a></li>
+    <li><a href="../07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="../08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="../08/a.html">Planning for Any-thing</a></li>
+    <li><a href="../08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="../09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="../09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="../09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="../10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="../10/a.html">Trying Netty</a></li>
+    <li><a href="../10/b.html">Execution and Exceptions</a></li>
+    <li><a href="../10/c.html">Chunked Requests</a></li>
+    <li><a href="../10/d.html">Going Asynchronous</a></li>
+    <li><a href="../10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="../11.html">Jetty Extras</a></li>
+  <li><a href="../12.html">ScalaTest</a></li>
+  <li><a href="../99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../index.html">Unfiltered</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Unfiltered
+</a>
+<div class="version-number">
+0.9.1
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../01.html">Try Unfiltered</a></li>
+  <li><a href="../02.html">Plans and Intents</a></li>
+  <li><a href="../03.html">Bindings and Servers</a></li>
+  <li><a href="../04.html">Project Setup</a></li>
+  <li><a href="../05.html">Community</a></li>
+  <li><a href="../06/00.html">Matching and Responding</a>
+  <ul>
+    <li><a href="../06/a.html">Request Matchers</a></li>
+    <li><a href="../06/b.html">Within the Parameters</a></li>
+    <li><a href="../06/c.html">Response Functions</a></li>
+    <li><a href="../06/d.html">Silly Store</a></li>
+  </ul></li>
+  <li><a href="../07/00.html">Directives and Validation</a>
+  <ul>
+    <li><a href="../07/a.html">Directive Intent</a></li>
+    <li><a href="../07/b.html" class="active">Parameters as Directives</a></li>
+    <li><a href="../07/c.html">Interpreter Reuse and Implicits</a></li>
+    <li><a href="../07/d.html">Required Parameters</a></li>
+    <li><a href="../07/e.html">Independent Failure</a></li>
+    <li><a href="../07/f.html">Interpreters of Your Own Design</a></li>
+    <li><a href="../07/g.html">Let&rsquo;s wrap this up, Ada</a></li>
+  </ul></li>
+  <li><a href="../08/00.html">Application Structure</a>
+  <ul>
+    <li><a href="../08/a.html">Planning for Any-thing</a></li>
+    <li><a href="../08/b.html">Just Kitting</a></li>
+  </ul></li>
+  <li><a href="../09/00.html">Identification and Cookies</a>
+  <ul>
+    <li><a href="../09/a.html">Who&rsquo;s Who</a></li>
+    <li><a href="../09/b.html">Remembrance of Things Past</a></li>
+  </ul></li>
+  <li><a href="../10/00.html">Netty Plans</a>
+  <ul>
+    <li><a href="../10/a.html">Trying Netty</a></li>
+    <li><a href="../10/b.html">Execution and Exceptions</a></li>
+    <li><a href="../10/c.html">Chunked Requests</a></li>
+    <li><a href="../10/d.html">Going Asynchronous</a></li>
+    <li><a href="../10/e.html">Asyncrazy Temperature Server</a></li>
+  </ul></li>
+  <li><a href="../11.html">Jetty Extras</a></li>
+  <li><a href="../12.html">ScalaTest</a></li>
+  <li><a href="../99.html">Who&rsquo;s Using Unfiltered?</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+<div class="nav-breadcrumbs">
+<ul>
+  <li><a href="../index.html">Unfiltered</a></li>
+  <li><a href="../07/00.html">Directives and Validation</a></li>
+  <li>Parameters as Directives</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#parameters-as-directives" name="parameters-as-directives" class="anchor"><span class="anchor-link"></span></a>Parameters as Directives</h2>
+<p>Any part of a request can be used to route and accept or reject the request. Request parameters, encoded in a query string or a POST request body, are an open field for richer requests &ndash; and user error. We can handle these with directives as well.</p>
+<h3><a href="#parameters-values" name="parameters-values" class="anchor"><span class="anchor-link"></span></a>Parameters Values</h3>
+<p>In HTTP, a parameter key can be specified multiple times with different values. Unfiltered&rsquo;s base model for parameters is therefore a string key to a sequence of string values in the order they were supplied. This is easy to obtain in a directive.</p>
+<pre class="prettyprint"><code class="language-scala">import unfiltered.request._
+import unfiltered.response._
+import unfiltered.directives._, Directives._
+import unfiltered.jetty.SocketPortBinding
+
+val binding = SocketPortBinding(host = &quot;localhost&quot;, port = 8080)
+
+unfiltered.jetty.Server.portBinding(binding).plan(
+  unfiltered.filter.Planify { Directive.Intent {
+    case Path(&quot;/&quot;) =&gt;
+      for {
+        in &lt;- parameterValues(&quot;in&quot;)
+      } yield ResponseString(in.toString)
+  } }
+).run()</code></pre>
+<p>You can try this service with multiple, one, or no parameters.</p>
+<pre class="prettyprint"><code class="language-sh">curl -v http://127.0.0.1:8080/ -d in=one -d in=two
+</code></pre>
+<p>Even with no parameters, the directive succeeds with an empty sequence. Since it&rsquo;s not establishing control flow, we could have accessed it just as easily through the <a href="../06/b.html">Params map</a>. But typically, we do have requirements on our input.</p>
+<h3><a href="#im-thinking-of-a-number" name="im-thinking-of-a-number" class="anchor"><span class="anchor-link"></span></a>I&rsquo;m thinking of a Number</h3>
+<p>Things get more interesting when require parameters to be in a particular format. From here on out, we&rsquo;ll be working with <em>interpreters</em> in the <a href="https://oss.sonatype.org/service/local/repositories/releases/archive/ws/unfiltered/unfiltered-all_2.12/0.9.1/unfiltered-all_2.12-0.9.1-javadoc.jar/!/unfiltered/directives/data/index.html"><code>unfiltered.directives.data</code></a> package. Interpreters define abstract operations on data; we can produce directives for a particular request parameter with <code>named</code>.</p>
+<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
+  unfiltered.filter.Planify { Directive.Intent {
+    case Path(&quot;/&quot;) =&gt;
+      for {
+        in &lt;- data.as.Int named &quot;in&quot;
+      } yield ResponseString(in.toString)
+  } }
+).run()</code></pre>
+<p>By testing this service you&rsquo;ll find that all requests to the root path are accepted, and that the <code>in</code> value is bound to an <code>Option[Int]</code>. If an <code>in</code> request parameter is not present or not a valid int, the value is <code>None</code>. This is a directive, but it&rsquo;s still one that always produceses a <code>Success</code> result.</p><div class="callout note "><div class="callout-title">Note</div>
+<p>What about repeated parameters? The object <code>data.as.Int</code> is an interpreter from <code>String</code> to <code>Int</code>, but in HTTP we model parameter values as a sequence of strings. This gap is bridged by another interpreter <code>data.as.String</code>, which chooses the first in the sequence. It&rsquo;s applied implicitly when needed.</p></div>
+<p>We can transform an interpreter that ignores failed interpretation into one that produces a failure response by passing an error handler to its <code>fail</code> method.</p>
+<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
+  unfiltered.filter.Planify { Directive.Intent {
+    case Path(&quot;/&quot;) =&gt;
+      for {
+        in &lt;- data.as.Int.fail { (k,v) =&gt;
+          BadRequest ~&gt; ResponseString(
+            s&quot;&#39;$v&#39; is not a valid int for $k&quot;
+          )
+        } named &quot;in&quot;
+      } yield ResponseString(in.toString)
+  } }
+).run()</code></pre>
+<p>The error handling function receives both the parameter name and given value as parameters. This way, a directive used for more than one parameter can have a specific error message for each.</p>
+<div class="nav-next">
+<p><strong>Next:</strong> <a href="../07/c.html">Interpreter Reuse and Implicits</a></p>
+</div>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../07/b.html#parameters-as-directives">Parameters as Directives</a>
+  <ul>
+    <li><a href="../07/b.html#parameters-values">Parameters Values</a></li>
+    <li><a href="../07/b.html#im-thinking-of-a-number">I&rsquo;m thinking of a Number</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2017</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+
+</html>
