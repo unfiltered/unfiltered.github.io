@@ -221,6 +221,10 @@ val echo = unfiltered.filter.Planify {
   val privateIntent = unfiltered.filter.Intent { ??? }
 }</code></pre>
 <p>The <code>onPass</code> method is defined implicitly for <code>PartialFunction</code> with the import of the <code>unfiltered.response._</code> package. It works like <code>orElse</code> but is aware of the <code>Pass</code> object and it&rsquo;s optimized to avoid unnecessary reevaluation of pattern guards.</p>
+<div class="source-github">
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/02.md">here</a>.
+</div>
+
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="03.html">Bindings and Servers</a></p>
 </div>

@@ -228,6 +228,10 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 ).run()</code></pre>
 <p>The first thing you may notice is that <code>implyIntValue</code> is a bit wordier than its predecessor. An implicit interpreter used for request parameters <strong>must interpret from Seq[String]</strong>. Think of it as a full interpretation from the input format to the output type. You may define these for any output types you want, and import them into scope wherever you want to use them. Interpreters like response functions can be chained with <code>~&gt;</code>, and so <code>data.as.String</code> is typically used at the beginning of an interpreter to be used implicit.</p>
 <p>If it seems like extra work to define implicit interpreters, keep reading. The payoff comes with required parameters.</p>
+<div class="source-github">
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/07/c.md">here</a>.
+</div>
+
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="../07/d.html">Required Parameters</a></p>
 </div>

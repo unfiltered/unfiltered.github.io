@@ -201,6 +201,10 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>The <code>Pass</code> response function is a signal for the plan act as if the request was not defined for this intent. If no other plan responds to the request, the server may respond with a 404 eror. But we can improve on that by ensuring that any request to this path that is not an expected method receives an appropriate response:</p>
 <pre class="prettyprint"><code class="language-scala">case _ =&gt; MethodNotAllowed ~&gt;
             ResponseString(&quot;Must be GET or PUT&quot;)</code></pre>
+<div class="source-github">
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/06/c.md">here</a>.
+</div>
+
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="../06/d.html">Silly Store</a></p>
 </div>
