@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
@@ -166,6 +167,8 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="small-12 medium-9 large-10 column">
 <section class="site-content">
 
+<span id="version-warning"></span>
+
 <div class="page-header row">
 <div class="medium-12 show-for-medium column">
 <div class="nav-breadcrumbs">
@@ -202,7 +205,7 @@ unfiltered.filter.Plan {
       SetCookies(Cookie(&quot;pref&quot;, &quot;&quot;)) ~&gt;
         Redirect(&quot;/&quot;)
   }
-}</code></pre>
+}</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/09/b.scala#L11-L30">Full source at GitHub</a>
 <p>Now that we have a slightly more sophisitcated basic application let&rsquo;s mount it with a user named <code>jim</code> and a password of <code>j@m</code>.</p>
 <pre class="prettyprint"><code class="language-scala">object JimsAuth extends Users {
   def auth(u: String, p: String) =
@@ -213,7 +216,7 @@ val binding = SocketPortBinding(host = &quot;localhost&quot;, port = 8080)
 
 unfiltered.jetty.Server.portBinding(binding).plan(
   App(JimsAuth)
-).run</code></pre>
+).run</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/09/b.scala#L35-L44">Full source at GitHub</a>
 <p>In your browser, open the url <code>http://localhost:8080/</code> and you should be greeted with its native authentication dialog. Enter <code>jim</code> and <code>j@m</code>, if you are feeling authentic.</p>
 <p>Once authenticated you should see simple text questioning your preferences. Why is this? Well, you have yet to tell the server what you prefer. In your url bar, enter the address</p>
 <pre class="prettyprint"><code class="nocode">http://localhost:8080/prefer?pref=kittens
@@ -291,5 +294,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M3', '')});</script>
+
 
 </html>

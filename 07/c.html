@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
@@ -166,6 +167,8 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="small-12 medium-9 large-10 column">
 <section class="site-content">
 
+<span id="version-warning"></span>
+
 <div class="page-header row">
 <div class="medium-12 show-for-medium column">
 <div class="nav-breadcrumbs">
@@ -203,7 +206,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
         (a ++ b).sum + &quot;n&quot;
       )
   } }
-).run()</code></pre>
+).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/07/c.scala#L11-L31">Full source at GitHub</a>
 <p>In the example above we explicitly reference and apply a single interpreter to parameters &ldquo;a&rdquo; and &ldquo;b&rdquo;, responding with their sum.</p><div class="callout note "><div class="callout-title">Note</div>
 <p>Unclear on the summing step? Values <code>a</code> and <code>b</code> are both of the iterable type <code>Option[Int]</code>. We join these with <code>++</code> forming a sequence of integers that could be as long as 2 or as short as 0, depending on the input. The <code>sum</code> method on this sequence does what you&rsquo;d expect, and finally we join with a string.</p></div>
 <h3><a href="#implicit-interpreters" name="implicit-interpreters" class="anchor"><span class="anchor-link"></span></a>Implicit Interpreters</h3>
@@ -225,7 +228,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
         (a ++ b).sum + &quot;\n&quot;
       )
   } }
-).run()</code></pre>
+).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/07/c.scala#L43-L60">Full source at GitHub</a>
 <p>The first thing you may notice is that <code>implyIntValue</code> is a bit wordier than its predecessor. An implicit interpreter used for request parameters <strong>must interpret from Seq[String]</strong>. Think of it as a full interpretation from the input format to the output type. You may define these for any output types you want, and import them into scope wherever you want to use them. Interpreters like response functions can be chained with <code>~&gt;</code>, and so <code>data.as.String</code> is typically used at the beginning of an interpreter to be used implicit.</p>
 <p>If it seems like extra work to define implicit interpreters, keep reading. The payoff comes with required parameters.</p>
 <div class="source-github">
@@ -313,5 +316,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M3', '')});</script>
+
 
 </html>
