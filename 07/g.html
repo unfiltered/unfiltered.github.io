@@ -31,7 +31,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M3
+0.10.0-M4
 </div>
 </div>
 <div class="nav-toc">
@@ -110,7 +110,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M3
+0.10.0-M4
 </div>
 </div>
 <div class="nav-toc">
@@ -205,25 +205,25 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
         for (message &lt;- messages)
         yield &lt;li&gt;{message}&lt;/li&gt;
       }&lt;/ul&gt;)
-    )</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/07/g.scala#L12-L19">Full source at GitHub</a>
+    )</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/07/g.scala#L12-L19">Full source at GitHub</a>
 <p>Also worth noting is that we defined our <code>BadParam</code> case class inside the match expression, since it needs a reference to <code>params</code> to build its error response. Another option would have been to take the <code>params</code> as a constructor parameter for the class.</p>
 <p>Finally, since we&rsquo;re dealing with user input via a serialized form rather than a programmatic web service, our expectations for errors are different. An &ldquo;empty&rdquo; field in the form is still submitted as a parameter &ndash; an empty string. Since this will be a common user error, we should handle it much like we would if the parameter were not submitted at all.</p>
 <pre class="prettyprint"><code class="language-scala">val inputString = data.as.String ~&gt;
   data.as.String.trimmed ~&gt;
   data.as.String.nonEmpty.fail(
     (key, _) =&gt; BadParam(s&quot;$key is empty&quot;)
-  )</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/07/g.scala#L24-L28">Full source at GitHub</a>
+  )</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/07/g.scala#L24-L28">Full source at GitHub</a>
 <p>But of course, we still need to define a <code>required</code> function since it is possible that some client will fail to submit a parameter.</p>
 <pre class="prettyprint"><code class="language-scala">implicit def required[T] = data.Requiring[T].fail(name =&gt;
   BadParam(name + &quot; is missing&quot;)
-)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/07/g.scala#L33-L35">Full source at GitHub</a>
+)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/07/g.scala#L33-L35">Full source at GitHub</a>
 <p>Finally, in this case the code keeps the logic of the conditional interpreter separate from the implementation, which is inline.</p>
 <pre class="prettyprint"><code class="language-scala">(inputString ~&gt; data.Conditional(palindrome).fail(
   (_, value) =&gt; BadParam(s&quot;&#39;$value&#39; is not a palindrome&quot;)
 ) ~&gt; required named &quot;palindrome&quot;)
 
 def palindrome(s: String) =
-  s.toLowerCase.reverse == s.toLowerCase</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/07/g.scala#L40-L45">Full source at GitHub</a>
+  s.toLowerCase.reverse == s.toLowerCase</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/07/g.scala#L40-L45">Full source at GitHub</a>
 <p>This is just to show the variety of what&rsquo;s possible, it&rsquo;s up to you to decide how to organize and apply your own interpreters. Good luck, and don&rsquo;t be shy about contributing back interpreters of standard library types back into the Unfiltered directives source!</p>
 <div class="source-github">
 The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/07/g.md">here</a>.
@@ -310,7 +310,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M3', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M4', '')});</script>
 
 
 </html>

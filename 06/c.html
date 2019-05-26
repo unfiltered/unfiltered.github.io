@@ -31,7 +31,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M3
+0.10.0-M4
 </div>
 </div>
 <div class="nav-toc">
@@ -110,7 +110,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M3
+0.10.0-M4
 </div>
 </div>
 <div class="nav-toc">
@@ -189,21 +189,21 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>Unfiltered includes a number of response functions for common response types. Continuing the &ldquo;record&rdquo; example, in some cases we may want to respond with a particular string:</p>
 <pre class="prettyprint"><code class="language-scala">  case PUT(_) =&gt;
     // ...
-    ResponseString(&quot;Record created&quot;)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/06/c.scala#L11-L13">Full source at GitHub</a>
+    ResponseString(&quot;Record created&quot;)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/06/c.scala#L11-L13">Full source at GitHub</a>
 <p>We should also set a status code for this response. Fortunately there is a predefined function for this too, and response functions are easily composed. Unfiltered even supplies a chaining combinator <code>~&gt;</code> to make it pretty:</p>
 <pre class="prettyprint"><code class="language-scala">  case PUT(_) =&gt;
     // ...
-    Created ~&gt; ResponseString(&quot;Record created&quot;)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/06/c.scala#L20-L22">Full source at GitHub</a>
+    Created ~&gt; ResponseString(&quot;Record created&quot;)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/06/c.scala#L20-L22">Full source at GitHub</a>
 <p>If we had some bytes, they would be as easy to serve as strings:</p>
 <pre class="prettyprint"><code class="language-scala">  case GET(_) =&gt;
     // ...
-    ResponseBytes(bytes)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/06/c.scala#L29-L31">Full source at GitHub</a>
+    ResponseBytes(bytes)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/06/c.scala#L29-L31">Full source at GitHub</a>
 <h2><a href="#passing-or-handling-errors" name="passing-or-handling-errors" class="anchor"><span class="anchor-link"></span></a>Passing or Handling Errors</h2>
 <p>And finally, for the case of unexpected methods we have a few choices. One option is to <em>pass</em> on the request:</p>
-<pre class="prettyprint"><code class="language-scala">  case _ =&gt; Pass</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/06/c.scala#L38">Full source at GitHub</a>
+<pre class="prettyprint"><code class="language-scala">  case _ =&gt; Pass</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/06/c.scala#L38">Full source at GitHub</a>
 <p>The <code>Pass</code> response function is a signal for the plan act as if the request was not defined for this intent. If no other plan responds to the request, the server may respond with a 404 eror. But we can improve on that by ensuring that any request to this path that is not an expected method receives an appropriate response:</p>
 <pre class="prettyprint"><code class="language-scala">  case _ =&gt; MethodNotAllowed ~&gt;
-              ResponseString(&quot;Must be GET or PUT&quot;)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/06/c.scala#L45-L46">Full source at GitHub</a>
+              ResponseString(&quot;Must be GET or PUT&quot;)</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/06/c.scala#L45-L46">Full source at GitHub</a>
 <div class="source-github">
 The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/06/c.md">here</a>.
 </div>
@@ -289,7 +289,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M3', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M4', '')});</script>
 
 
 </html>

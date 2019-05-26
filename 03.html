@@ -31,7 +31,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M3
+0.10.0-M4
 </div>
 </div>
 <div class="nav-toc">
@@ -110,7 +110,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M3
+0.10.0-M4
 </div>
 </div>
 <div class="nav-toc">
@@ -203,7 +203,7 @@ object AsyncPlan extends unfiltered.filter.async.Plan  {
   }
 }
 //then you can register this plan with jetty as usual
-unfiltered.jetty.Server.http(8080).plan(AsyncPlan).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/03.scala#L5-L17">Full source at GitHub</a><div class="callout note "><div class="callout-title">Note</div>
+unfiltered.jetty.Server.http(8080).plan(AsyncPlan).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/03.scala#L5-L17">Full source at GitHub</a><div class="callout note "><div class="callout-title">Note</div>
 <p>Alternately, <code>local(8080)</code> binds to the loopback network interface only.</p></div>
 <h4><a href="#netty-channel-handlers-unfiltered-netty-" name="netty-channel-handlers-unfiltered-netty-" class="anchor"><span class="anchor-link"></span></a>Netty Channel Handlers (unfiltered-netty)</h4>
 <p>Netty defines <em>channels</em> for network I/O and implements them using Java&rsquo;s Native I/O (NIO) interface. Its plan traits are upstream channel handlers, and the module defines intents and plans in separate <code>cycle</code> and <code>async</code> subpackages, the former for traditional request-response cycles and the latter for open-ended interaction.</p>
@@ -219,14 +219,14 @@ unfiltered.jetty.Server.anylocal.plan(hello).run { s =&gt;
   unfiltered.util.Browser.open(
     s.portBindings.head.url
   )
-}</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/03.scala#L24-L32">Full source at GitHub</a>
+}</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/03.scala#L24-L32">Full source at GitHub</a>
 <h4><a href="#unfiltered-netty-server" name="unfiltered-netty-server" class="anchor"><span class="anchor-link"></span></a>unfiltered-netty-server</h4>
 <p>Bootstraps and binds a server for your channel handlers.</p>
 <pre class="prettyprint"><code class="language-scala">import unfiltered.response._
 val hello = unfiltered.netty.cycle.Planify {
   case _ =&gt; ResponseString(&quot;hello world&quot;)
 }
-unfiltered.netty.Server.http(8080).plan(hello).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/03.scala#L38-L42">Full source at GitHub</a>
+unfiltered.netty.Server.http(8080).plan(hello).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/03.scala#L38-L42">Full source at GitHub</a>
 <div class="source-github">
 The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/03.md">here</a>.
 </div>
@@ -312,7 +312,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M3', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M4', '')});</script>
 
 
 </html>

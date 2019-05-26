@@ -31,7 +31,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M3
+0.10.0-M4
 </div>
 </div>
 <div class="nav-toc">
@@ -110,7 +110,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M3
+0.10.0-M4
 </div>
 </div>
 <div class="nav-toc">
@@ -205,9 +205,9 @@ import unfiltered.response._
 
 val echo = unfiltered.filter.Planify {
   case Path(Seg(p :: Nil)) =&gt; ResponseString(p)
-}</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/01.scala#L6-L11">Full source at GitHub</a>
+}</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/01.scala#L6-L11">Full source at GitHub</a>
 <p>This filter <code>echo</code> would work with any servlet container. We can use it in a Jetty server right now.</p>
-<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.anylocal.plan(echo).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/01.scala#L16">Full source at GitHub</a>
+<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.anylocal.plan(echo).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/01.scala#L16">Full source at GitHub</a>
 <p>The startup message tells you which open port was selected, and by default it is only listening to requests from 127.0.0.1. So on the same machine, you can make requests to your server. e.g.</p>
 <pre class="prettyprint"><code class="language-sh">curl http://127.0.0.1:&lt;the right port&gt;/hello+world
 </code></pre>
@@ -219,14 +219,14 @@ val echo = unfiltered.filter.Planify {
     &quot;I can echo exactly one path element.&quot;
   )
 }
-unfiltered.jetty.Server.anylocal.plan(echoNice).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/01.scala#L21-L27">Full source at GitHub</a>
+unfiltered.jetty.Server.anylocal.plan(echoNice).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/01.scala#L21-L27">Full source at GitHub</a>
 <p>Or we could define another filter chain it to the first.</p>
 <pre class="prettyprint"><code class="language-scala">val nice = unfiltered.filter.Planify {
   case _ =&gt; ResponseString(
     &quot;I can echo exactly one path element.&quot;
   )
 }
-unfiltered.jetty.Server.anylocal.plan(echo).plan(nice).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M3/src/main/scala/01.scala#L32-L37">Full source at GitHub</a>
+unfiltered.jetty.Server.anylocal.plan(echo).plan(nice).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/01.scala#L32-L37">Full source at GitHub</a>
 <p>Happy now?</p>
 <div class="source-github">
 The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/01.md">here</a>.
@@ -313,7 +313,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M3', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M4', '')});</script>
 
 
 </html>
