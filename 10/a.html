@@ -11,7 +11,6 @@
 <script type="text/javascript" src="../js/page.js"></script>
 <script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
-<link rel="stylesheet" type="text/css" href="../lib/normalize.css/normalize.css"/>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="../css/page.css"/>
 
@@ -192,14 +191,14 @@ cd nettyplayin
 sbt console
 </code></pre>
 <p>Once you do get to a console, this should just work:</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.response._
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/10/a.scala#L6-L10" target="_blank" title="Go to snippet source"></a><code class="language-scala">import unfiltered.response._
 val hello = unfiltered.netty.cycle.Planify {
   case _ =&gt; ResponseString(&quot;hello world&quot;)
 }
-unfiltered.netty.Server.http(8080).plan(hello).run()</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/10/a.scala#L6-L10">Full source at GitHub</a>
+unfiltered.netty.Server.http(8080).plan(hello).run()</code></pre>
 <p>Direct a web browser to <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> and you&rsquo;ll be in <em>hello world</em> business.</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/10/a.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/paradox/10/a.md">here</a>.
 </div>
 
 <div class="nav-next">

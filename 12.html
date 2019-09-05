@@ -11,7 +11,6 @@
 <script type="text/javascript" src="js/page.js"></script>
 <script type="text/javascript" src="js/warnOldVersion.js"></script>
 <script type="text/javascript" src="js/groups.js"></script>
-<link rel="stylesheet" type="text/css" href="lib/normalize.css/normalize.css"/>
 <link rel="stylesheet" type="text/css" href="lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/page.css"/>
 
@@ -186,7 +185,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>Helps creating feature tests for Unfiltered apps with scalatest.</p>
 <h3><a href="#usage" name="usage" class="anchor"><span class="anchor-link"></span></a>Usage</h3>
 <p>Here is a test written using this support.</p>
-<pre class="prettyprint"><code class="language-scala">class ExampleFeature extends FeatureSpec with unfiltered.scalatest.jetty.Served
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/12.scala#L17-L48" target="_blank" title="Go to snippet source"></a><code class="language-scala">class ExampleFeature extends FeatureSpec with unfiltered.scalatest.jetty.Served
                                               with unfiltered.scalatest.Hosted
                                               with GivenWhenThen with Matchers {
 
@@ -217,11 +216,11 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
         response.as_string should include(&quot;sweets is not a palindrome&quot;)
     }
   }
-}</code></pre><a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/12.scala#L17-L48">Full source at GitHub</a>
+}</code></pre>
 <h3><a href="#limitations" name="limitations" class="anchor"><span class="anchor-link"></span></a>Limitations</h3>
 <p>Only Feature type scalatests are supported.</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/12.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/paradox/12.md">here</a>.
 </div>
 
 <div class="nav-next">
