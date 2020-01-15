@@ -30,7 +30,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M4
+0.10.0-M6
 </div>
 </div>
 <div class="nav-toc">
@@ -109,7 +109,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M4
+0.10.0-M6
 </div>
 </div>
 <div class="nav-toc">
@@ -199,20 +199,20 @@ sbt console
 </code></pre>
 <h3><a href="#consoled" name="consoled" class="anchor"><span class="anchor-link"></span></a>Consoled</h3>
 <p>Now that you have a <code>scala&gt;</code> prompt with the <code>unfiltered-filter</code> and <code>unfiltered-jetty</code> modules on the classpath, let&rsquo;s have some fun.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/01.scala#L6-L11" target="_blank" title="Go to snippet source"></a><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M6/src/main/scala/01.scala#L6-L11" target="_blank" title="Go to snippet source"></a><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 
 val echo = unfiltered.filter.Planify {
   case Path(Seg(p :: Nil)) =&gt; ResponseString(p)
 }</code></pre>
 <p>This filter <code>echo</code> would work with any servlet container. We can use it in a Jetty server right now.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/01.scala#L16" target="_blank" title="Go to snippet source"></a><code class="language-scala">unfiltered.jetty.Server.anylocal.plan(echo).run()</code></pre>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M6/src/main/scala/01.scala#L16" target="_blank" title="Go to snippet source"></a><code class="language-scala">unfiltered.jetty.Server.anylocal.plan(echo).run()</code></pre>
 <p>The startup message tells you which open port was selected, and by default it is only listening to requests from 127.0.0.1. So on the same machine, you can make requests to your server. e.g.</p>
 <pre class="prettyprint"><code class="language-sh">curl http://127.0.0.1:&lt;the right port&gt;/hello+world
 </code></pre>
 <p>Fancy desktop web browsers will work too. Notice that exactly one path segment is required for the filter to respond to the request. If you ask for the root path or a deeper path, the <code>echo</code> filter will not handle the request and Jetty responds with a 404 page.</p>
 <p>If we want to handle any request, we could broaden the pattern matching expression. (Press enter to stop the running server.)</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/01.scala#L21-L27" target="_blank" title="Go to snippet source"></a><code class="language-scala">val echoNice = unfiltered.filter.Planify {
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M6/src/main/scala/01.scala#L21-L27" target="_blank" title="Go to snippet source"></a><code class="language-scala">val echoNice = unfiltered.filter.Planify {
   case Path(Seg(p :: Nil)) =&gt; ResponseString(p)
   case _ =&gt; ResponseString(
     &quot;I can echo exactly one path element.&quot;
@@ -220,7 +220,7 @@ val echo = unfiltered.filter.Planify {
 }
 unfiltered.jetty.Server.anylocal.plan(echoNice).run()</code></pre>
 <p>Or we could define another filter chain it to the first.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/main/scala/01.scala#L32-L37" target="_blank" title="Go to snippet source"></a><code class="language-scala">val nice = unfiltered.filter.Planify {
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M6/src/main/scala/01.scala#L32-L37" target="_blank" title="Go to snippet source"></a><code class="language-scala">val nice = unfiltered.filter.Planify {
   case _ =&gt; ResponseString(
     &quot;I can echo exactly one path element.&quot;
   )
@@ -228,7 +228,7 @@ unfiltered.jetty.Server.anylocal.plan(echoNice).run()</code></pre>
 unfiltered.jetty.Server.anylocal.plan(echo).plan(nice).run()</code></pre>
 <p>Happy now?</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M4/src/paradox/01.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M6/src/paradox/01.md">here</a>.
 </div>
 
 <div class="nav-next">
@@ -312,7 +312,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M4', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M6', '')});</script>
 
 
 </html>
