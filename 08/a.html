@@ -30,7 +30,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M6
+0.10.0-M8
 </div>
 </div>
 <div class="nav-toc">
@@ -109,7 +109,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M6
+0.10.0-M8
 </div>
 </div>
 <div class="nav-toc">
@@ -185,7 +185,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#planning-for-any-thing" name="planning-for-any-thing" class="anchor"><span class="anchor-link"></span></a>Planning for Any-thing</h2>
 <p>Thanks to one of the darker corners of the Scala type system (*variance*), it&rsquo;s a cinch to define intents that work with all plans.</p>
 <h3><a href="#agnostic-intents" name="agnostic-intents" class="anchor"><span class="anchor-link"></span></a>Agnostic Intents</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M6/src/main/scala/08/a.scala#L8-L12" target="_blank" title="Go to snippet source"></a><code class="language-scala">object Hello {
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/08/a.scala#L8-L12" target="_blank" title="Go to snippet source"></a><code class="language-scala">object Hello {
   val intent = unfiltered.Cycle.Intent[Any, Any] {
     case _ =&gt; ResponseString(&quot;Hello&quot;)
   }
@@ -193,14 +193,14 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>The object <code>Hello</code> defines an intent with underlying request and response types of <code>Any</code>. As a result, the intent can not statically expect a particular underlying request or response binding. This makes sense, as we want to make an intent that works with any of them.</p>
 <h3><a href="#specific-plans" name="specific-plans" class="anchor"><span class="anchor-link"></span></a>Specific Plans</h3>
 <p>The next step is to supply the same generic intent to different kinds of plans.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M6/src/main/scala/08/a.scala#L17-L21" target="_blank" title="Go to snippet source"></a><code class="language-scala">val helloFilter =
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/08/a.scala#L17-L21" target="_blank" title="Go to snippet source"></a><code class="language-scala">val helloFilter =
   unfiltered.filter.Planify(Hello.intent)
 
 val helloHandler =
   unfiltered.netty.cycle.Planify(Hello.intent)</code></pre>
 <p>As usual the plans are actual servlet filters or Netty handlers, so you could use them with a server you have configured separately or with a <a href="../03.html">server configured by Unfiltered</a>.</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M6/src/paradox/08/a.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/paradox/08/a.md">here</a>.
 </div>
 
 <div class="nav-next">
@@ -284,7 +284,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M6', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M8', '')});</script>
 
 
 </html>
