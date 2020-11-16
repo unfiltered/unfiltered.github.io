@@ -30,7 +30,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M8
+0.1.0*
 </div>
 </div>
 <div class="nav-toc">
@@ -109,7 +109,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M8
+0.1.0*
 </div>
 </div>
 <div class="nav-toc">
@@ -185,7 +185,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#whos-who" name="whos-who" class="anchor"><span class="anchor-link"></span></a>Who&rsquo;s Who</h2>
 <p>Out of the box HTTP provides you with <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">basic authentication</a>, a simple way to specify a name and password for a request. These credentials are transferred as an unencrypted request header, so applications should secure both credentials and message bodies by requiring HTTPS for any protected resources.</p>
 <p>Below, we define a <em>kit</em> that extracts a username and password via basic HTTP authentication and verifies those credentials before letting anyone through the gate. It presumes a <code>Users</code> service that would validate the user&rsquo;s credentials.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/09/a.scala#L6-L22" target="_blank" title="Go to snippet source"></a><code class="language-scala">trait Users {
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/09/a.scala#L6-L22" target="_blank" title="Go to snippet source"></a><code class="language-scala">trait Users {
   def auth(u: String, p: String): Boolean
 }
 
@@ -203,7 +203,7 @@ case class Auth(users: Users) {
     }
 }</code></pre>
 <p>By applying this kit we can layer basic authentication around any intent in a client application.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/09/a.scala#L27-L32" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class App(users: Users) extends
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/09/a.scala#L27-L32" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class App(users: Users) extends
 unfiltered.filter.Plan {
   def intent = Auth(users) {
     case _ =&gt; ResponseString(&quot;Shhhh!&quot;)
@@ -211,7 +211,7 @@ unfiltered.filter.Plan {
 }</code></pre>
 <p>Also, don&rsquo;t give the password to any newspaper reporters.</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/paradox/09/a.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/09/a.md">here</a>.
 </div>
 
 <div class="nav-next">
@@ -281,7 +281,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M8', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.1.0-SNAPSHOT', '')});</script>
 
 
 </html>

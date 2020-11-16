@@ -30,7 +30,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M8
+0.1.0*
 </div>
 </div>
 <div class="nav-toc">
@@ -109,7 +109,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.0-M8
+0.1.0*
 </div>
 </div>
 <div class="nav-toc">
@@ -185,20 +185,20 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#request-matchers" name="request-matchers" class="anchor"><span class="anchor-link"></span></a>Request Matchers</h2>
 <h3><a href="#methods-and-paths" name="methods-and-paths" class="anchor"><span class="anchor-link"></span></a>Methods and Paths</h3>
 <p>Unfiltered supplies a wide range of <em>request matchers</em>&ndash;extractor objects that work against requests&ndash;from path segments to HTTP methods and headers. Applications use request matchers to define whether and how they will respond to a request.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/06/a.scala#L8" target="_blank" title="Go to snippet source"></a><code class="language-scala">case GET(Path(&quot;/record/1&quot;)) =&gt; ???</code></pre>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/06/a.scala#L8" target="_blank" title="Go to snippet source"></a><code class="language-scala">case GET(Path(&quot;/record/1&quot;)) =&gt; ???</code></pre>
 <p>This case will match GET requests to the path <code>/record/1</code>. To match against path segments, we can nest one additional extractor:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/06/a.scala#L13" target="_blank" title="Go to snippet source"></a><code class="language-scala">case GET(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???</code></pre>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/06/a.scala#L13" target="_blank" title="Go to snippet source"></a><code class="language-scala">case GET(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???</code></pre>
 <p>This matches any <code>id</code> string that is directly under the record path. The <code>Seg</code> extractor object matches against the <code>String</code> type and it is typically nested under a <code>Path</code> matcher. <code>Seg</code> extracts a lists of strings from the supplied string, separated into path segments by forward-slashes.</p>
 <h3><a href="#reading-requests-and-delayed-matching" name="reading-requests-and-delayed-matching" class="anchor"><span class="anchor-link"></span></a>Reading Requests and Delayed Matching</h3>
 <p>The above case clause matches a request to get a record. What about putting them?</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/06/a.scala#L18-L19" target="_blank" title="Go to snippet source"></a><code class="language-scala">case req @ PUT(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt;
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/06/a.scala#L18-L19" target="_blank" title="Go to snippet source"></a><code class="language-scala">case req @ PUT(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt;
   val bytes = Body.bytes(req)</code></pre>
 <p>Access to the request body generally has side effects, such as the consumption of a stream that can only be read once. For this reason the body is not accessed from a request matcher, which could be evaluated more than one time, but from utility functions that operate on the request object.</p>
 <p>In this case, we assigned a reference to the request using <code>req @</code> and then read its body into a byte array&ndash;on the assumption that its body will fit into available memory. That aside, a minor annoyance is that this code introduces some repetition in the matching expression.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/06/a.scala#L25-L26" target="_blank" title="Go to snippet source"></a><code class="language-scala">case GET(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/06/a.scala#L25-L26" target="_blank" title="Go to snippet source"></a><code class="language-scala">case GET(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???
 case req @ PUT(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???</code></pre>
 <p>An alternative is to match first on the path, then on the method:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/main/scala/06/a.scala#L31-L35" target="_blank" title="Go to snippet source"></a><code class="language-scala">case req @ Path(Seg(&quot;record&quot; :: id :: Nil)) =&gt; req match {
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/06/a.scala#L31-L35" target="_blank" title="Go to snippet source"></a><code class="language-scala">case req @ Path(Seg(&quot;record&quot; :: id :: Nil)) =&gt; req match {
   case GET(_) =&gt; ???
   case PUT(_) =&gt; ???
   case _ =&gt; ???
@@ -206,7 +206,7 @@ case req @ PUT(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???</code></pre
 <p>This approach eliminates the duplicated code, but it&rsquo;s important to recognize that it behaves differently as well. The original intent partial function was simply <em>not defined</em> for request to that path that were not a GET or a PUT. The latest one matches any request to that path, and therefore it must return a value for all methods with its match expression.</p>
 <p>Importantly, delaying the match on request method simplified the intent partial function. What used to be two cases is now one, and we could add support for other methods like DELETE without adding any complexity to its pattern matching. This is worth noting because <code>ifDefined</code> is called on every intent at least once prior to its evaluation. By making the intent more broadly defined, we&rsquo;ve reduced the complexity of that and potentially improved runtime performance.</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M8/src/paradox/06/a.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/06/a.md">here</a>.
 </div>
 
 <div class="nav-next">
@@ -290,7 +290,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M8', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.1.0-SNAPSHOT', '')});</script>
 
 
 </html>
