@@ -30,7 +30,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.1.0*
+0.10.0-M11
 </div>
 </div>
 <div class="nav-toc">
@@ -109,7 +109,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.1.0*
+0.10.0-M11
 </div>
 </div>
 <div class="nav-toc">
@@ -185,7 +185,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#interpreter-reuse-and-implicits" name="interpreter-reuse-and-implicits" class="anchor"><span class="anchor-link"></span></a>Interpreter Reuse and Implicits</h2>
 <h3><a href="#explicit-interpreters" name="explicit-interpreters" class="anchor"><span class="anchor-link"></span></a>Explicit Interpreters</h3>
 <p>In a non-trival application you are likely to have more than one parameter of one method that expects an integer. Instead of defining interpreters inline, as in previous examples, you can define a general interpreter once and use it many places.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/07/c.scala#L11-L31" target="_blank" title="Go to snippet source"></a><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/main/scala/07/c.scala#L11-L31" target="_blank" title="Go to snippet source"></a><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 import unfiltered.directives._, Directives._
 
@@ -210,7 +210,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 <p>Unclear on the summing step? Values <code>a</code> and <code>b</code> are both of the iterable type <code>Option[Int]</code>. We join these with <code>++</code> forming a sequence of integers that could be as long as 2 or as short as 0, depending on the input. The <code>sum</code> method on this sequence does what you&rsquo;d expect, and finally we join with a string.</p></div>
 <h3><a href="#implicit-interpreters" name="implicit-interpreters" class="anchor"><span class="anchor-link"></span></a>Implicit Interpreters</h3>
 <p>Referencing an interpreter was fairly tidy operation, but as we&rsquo;ll be using interpreters often and in different applications, naming and recalling names for various types could become tedious. Let&rsquo;s try it with an implicit.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/07/c.scala#L43-L60" target="_blank" title="Go to snippet source"></a><code class="language-scala">implicit val implyIntValue =
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/main/scala/07/c.scala#L43-L60" target="_blank" title="Go to snippet source"></a><code class="language-scala">implicit val implyIntValue =
   data.as.String ~&gt; data.as.Int.fail { (k,v) =&gt;
     BadRequest ~&gt; ResponseString(
       s&quot;&#39;$v&#39; is not a valid int for $k&quot;
@@ -231,7 +231,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 <p>The first thing you may notice is that <code>implyIntValue</code> is a bit wordier than its predecessor. An implicit interpreter used for request parameters <strong>must interpret from Seq[String]</strong>. Think of it as a full interpretation from the input format to the output type. You may define these for any output types you want, and import them into scope wherever you want to use them. Interpreters like response functions can be chained with <code>~&gt;</code>, and so <code>data.as.String</code> is typically used at the beginning of an interpreter to be used implicit.</p>
 <p>If it seems like extra work to define implicit interpreters, keep reading. The payoff comes with required parameters.</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/master/src/paradox/07/c.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/paradox/07/c.md">here</a>.
 </div>
 
 <div class="nav-next">
@@ -315,7 +315,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.1.0-SNAPSHOT', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.0-M11', '')});</script>
 
 
 </html>
