@@ -185,7 +185,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>Helps creating feature tests for Unfiltered apps with scalatest.</p>
 <h3><a href="#usage" name="usage" class="anchor"><span class="anchor-link"></span></a>Usage</h3>
 <p>Here is a test written using this support.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/12.scala#L17-L48" target="_blank" title="Go to snippet source"></a><code class="language-scala">class ExampleFeature extends FeatureSpec with unfiltered.scalatest.jetty.Served
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/master/src/main/scala/12.scala#L19-L50" target="_blank" title="Go to snippet source"></a><code class="language-scala">class ExampleFeature extends AnyFeatureSpec with unfiltered.scalatest.jetty.Served
                                               with unfiltered.scalatest.Hosted
                                               with GivenWhenThen with Matchers {
 
@@ -193,8 +193,8 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
     _.plan(new App)
   }
 
-  feature(&quot;rest app&quot;) {
-    scenario(&quot;should validate integers&quot;) {
+  Feature(&quot;rest app&quot;) {
+    Scenario(&quot;should validate integers&quot;) {
       Given(&quot;an invalid int and a valid palindrome as parameters&quot;)
         val params = Map(&quot;int&quot; -&gt; &quot;x&quot;, &quot;palindrome&quot; -&gt; &quot;twistsiwt&quot;)
       When(&quot;parameters are posted&quot;)
@@ -205,7 +205,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
         response.as_string should include(&quot;x is not an integer&quot;)
     }
 
-    scenario(&quot;should validate palindrome&quot;) {
+    Scenario(&quot;should validate palindrome&quot;) {
       Given(&quot;a valid int and an invalid palindrome as parameters&quot;)
         val params = Map(&quot;int&quot; -&gt; &quot;1&quot;, &quot;palindrome&quot; -&gt; &quot;sweets&quot;)
       When(&quot;parameters are posted&quot;)
