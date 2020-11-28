@@ -185,7 +185,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>Helps creating feature tests for Unfiltered apps with scalatest.</p>
 <h3><a href="#usage" name="usage" class="anchor"><span class="anchor-link"></span></a>Usage</h3>
 <p>Here is a test written using this support.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/main/scala/12.scala#L19-L50" target="_blank" title="Go to snippet source"></a><code class="language-scala">class ExampleFeature extends AnyFeatureSpec with unfiltered.scalatest.jetty.Served
+<pre class="prettyprint"><code class="language-scala">class ExampleFeature extends AnyFeatureSpec with unfiltered.scalatest.jetty.Served
                                               with unfiltered.scalatest.Hosted
                                               with GivenWhenThen with Matchers {
 
@@ -219,10 +219,6 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 }</code></pre>
 <h3><a href="#limitations" name="limitations" class="anchor"><span class="anchor-link"></span></a>Limitations</h3>
 <p>Only Feature type scalatests are supported.</p>
-<div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/paradox/12.md">here</a>.
-</div>
-
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="99.html">Who&rsquo;s Using Unfiltered?</a></p>
 </div>

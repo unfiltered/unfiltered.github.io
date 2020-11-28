@@ -217,10 +217,6 @@ object MyExecutor {
 </code></pre>
 <h3><a href="#expecting-exceptions" name="expecting-exceptions" class="anchor"><span class="anchor-link"></span></a>Expecting Exceptions</h3>
 <p>The <code>ServerErrorResponse</code> trait also implements behavior that your application will likely need to customize, sooner or later. Instead of mixing in that trait, you can implement <code>onException</code> directly in your base plan. For a starting point see the source for the <a href="https://github.com/unfiltered/Unfiltered/blob/master/netty/src/main/scala/exceptions.scala#L15">provided exception handler</a>, which logs the stack trace to stdout and serves a very terse error response. Normally an application will hook into its own logger and serve a custom error page or redirect.</p>
-<div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/paradox/10/b.md">here</a>.
-</div>
-
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="../10/c.html">Chunked Requests</a></p>
 </div>

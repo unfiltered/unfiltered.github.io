@@ -185,10 +185,6 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>Pattern matching is an easy and reliable way to handle requests that conform to expected criteria, but what about the requests that don&rsquo;t? Typically, they fall through to a 404 handler. While this behavior is logical enough from the perspective of a service&rsquo;s programming, clients of the service might reasonably assume that they&rsquo;ve supplied the wrong path instead of, as in a previous example, <a href="../06/b.html#routing-by-parameter">an invalid parameter</a>.</p>
 <p>With enough fallback cases and nested match expressions, you could program whatever logic you want — including descriptive error handling. But that approach sacrifices the simplicity and readability that made pattern matching attractive in the first place.</p>
 <p><strong>Fortunately, there is another way.</strong> With directives you can express request criteria concisely, and scrupulously handle errors too.</p>
-<div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/paradox/07/00.md">here</a>.
-</div>
-
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="../07/a.html">Directive Intent</a></p>
 </div>

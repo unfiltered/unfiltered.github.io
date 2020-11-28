@@ -185,7 +185,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#remembrance-of-things-past" name="remembrance-of-things-past" class="anchor"><span class="anchor-link"></span></a>Remembrance of Things Past</h2>
 <p>Basic authentication is a lightweight solution to general authentication, but what if we need to remember a little more information about a user&rsquo;s session? That&rsquo;s where <a href="http://en.wikipedia.org/wiki/HTTP_cookie">cookies</a> come in.</p>
 <p>Let&rsquo;s build on our authenticated application and add support for simple cookie handling.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/main/scala/09/b.scala#L11-L30" target="_blank" title="Go to snippet source"></a><code class="language-scala">import unfiltered.Cookie
+<pre class="prettyprint"><code class="language-scala">import unfiltered.Cookie
 
 case class App(users: Users) extends
 unfiltered.filter.Plan {
@@ -206,7 +206,7 @@ unfiltered.filter.Plan {
   }
 }</code></pre>
 <p>Now that we have a slightly more sophisitcated basic application let&rsquo;s mount it with a user named <code>jim</code> and a password of <code>j@m</code>.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/main/scala/09/b.scala#L35-L44" target="_blank" title="Go to snippet source"></a><code class="language-scala">object JimsAuth extends Users {
+<pre class="prettyprint"><code class="language-scala">object JimsAuth extends Users {
   def auth(u: String, p: String) =
     u == &quot;jim&quot; &amp;&amp; p == &quot;j@m&quot;
 }
@@ -222,10 +222,6 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 </code></pre>
 <p>or whatever else you have a preference for. Now, every time you request <code>http://localhost:8080/</code> the server has remembered your preference for you. This is a cookie at work!</p>
 <p>If you change your mind you can always hit the <code>prefer</code> path with a new pref or just tell the server to forget it by entering the address <code>http://localhost:8080/forget</code>.</p>
-<div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.10.0-M11/src/paradox/09/b.md">here</a>.
-</div>
-
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="../10/00.html">Netty Plans</a></p>
 </div>
