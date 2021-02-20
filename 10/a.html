@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/page.js"></script>
 <script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
+<script type="text/javascript" src="../js/snippets.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="../css/page.css"/>
 
@@ -191,7 +192,7 @@ cd nettyplayin
 sbt console
 </code></pre>
 <p>Once you do get to a console, this should just work:</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.response._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">import unfiltered.response._
 val hello = unfiltered.netty.cycle.Planify {
   case _ =&gt; ResponseString(&quot;hello world&quot;)
 }

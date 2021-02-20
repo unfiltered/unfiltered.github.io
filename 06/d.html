@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/page.js"></script>
 <script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
+<script type="text/javascript" src="../js/snippets.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="../css/page.css"/>
 
@@ -185,7 +186,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#silly-store" name="silly-store" class="anchor"><span class="anchor-link"></span></a>Silly Store</h2>
 <h3><a href="#opening-the-store" name="opening-the-store" class="anchor"><span class="anchor-link"></span></a>Opening the Store</h3>
 <p>Using the request matchers and response functions outlined over the last couple of pages, we have everything we need to build a naive key-value store.</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 
 object SillyStore extends unfiltered.filter.Plan {
@@ -207,7 +208,7 @@ object SillyStore extends unfiltered.filter.Plan {
   }
 }</code></pre>
 <p>Go ahead and paste that into a <a href="../01.html">console</a>. Then, execute the plan with a server, adjusting the port if your system does not have 8080 available.</p>
-<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.local(8080).plan(SillyStore).run()</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">unfiltered.jetty.Server.local(8080).plan(SillyStore).run()</code></pre>
 <p>The method <code>local</code>, like <code>anylocal</code>, binds only to the loopback interface, for safety. SillyStore is not quite &ldquo;web-scale&rdquo;.</p>
 <h3><a href="#curling-the-store" name="curling-the-store" class="anchor"><span class="anchor-link"></span></a>Curling the Store</h3>
 <p>The command line utility <a href="http://curl.haxx.se/">cURL</a> is great for testing HTTP servers. First, we&rsquo;ll try to retrieve a record.</p>

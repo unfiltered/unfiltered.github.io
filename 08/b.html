@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/page.js"></script>
 <script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
+<script type="text/javascript" src="../js/snippets.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="../css/page.css"/>
 
@@ -189,7 +190,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>The GZip <em>kit</em> is a higher level abstraction that can be applied at once to full intent function. The kit will examine the request first, and if appropriate, prepends a compressing function to the response function chain provided by the intent.</p>
 <h4><a href="#gzip-kit-definition" name="gzip-kit-definition" class="anchor"><span class="anchor-link"></span></a>GZip Kit Definition</h4>
 <p>This part is already done for you in <code>unfiltered-libary</code>, but in case you are curious this is how the GZip kit is defined.</p>
-<pre class="prettyprint"><code class="language-scala">object GZip extends unfiltered.kit.Prepend {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">object GZip extends unfiltered.kit.Prepend {
   def intent = unfiltered.Cycle.Intent[Any,Any] {
     case Decodes.GZip(req) =&gt;
       ContentEncoding.GZip ~&gt; ResponseFilter.GZip
@@ -198,7 +199,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>Unlike a plan&rsquo;s intent function, this one defines the conditions for which its response function is prepended another intent&rsquo;s. It sets a header and a <code>FilterOutputStream</code> for the response.</p>
 <h3><a href="#gzip-usage" name="gzip-usage" class="anchor"><span class="anchor-link"></span></a>GZip Usage</h3>
 <p>This is a very simple plan that will compress its responses if the user-agent supports it:</p>
-<pre class="prettyprint"><code class="language-scala">object EchoPlan extends unfiltered.filter.Plan {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">object EchoPlan extends unfiltered.filter.Plan {
   def intent = unfiltered.kit.GZip {
     case Path(path) =&gt; ResponseString(path)
   }

@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/page.js"></script>
 <script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
+<script type="text/javascript" src="../js/snippets.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="../css/page.css"/>
 
@@ -185,7 +186,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#interpreter-reuse-and-implicits" name="interpreter-reuse-and-implicits" class="anchor"><span class="anchor-link"></span></a>Interpreter Reuse and Implicits</h2>
 <h3><a href="#explicit-interpreters" name="explicit-interpreters" class="anchor"><span class="anchor-link"></span></a>Explicit Interpreters</h3>
 <p>In a non-trival application you are likely to have more than one parameter of one method that expects an integer. Instead of defining interpreters inline, as in previous examples, you can define a general interpreter once and use it many places.</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 import unfiltered.directives._, Directives._
 
@@ -210,7 +211,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 <p>Unclear on the summing step? Values <code>a</code> and <code>b</code> are both of the iterable type <code>Option[Int]</code>. We join these with <code>++</code> forming a sequence of integers that could be as long as 2 or as short as 0, depending on the input. The <code>sum</code> method on this sequence does what you&rsquo;d expect, and finally we join with a string.</p></div>
 <h3><a href="#implicit-interpreters" name="implicit-interpreters" class="anchor"><span class="anchor-link"></span></a>Implicit Interpreters</h3>
 <p>Referencing an interpreter was fairly tidy operation, but as we&rsquo;ll be using interpreters often and in different applications, naming and recalling names for various types could become tedious. Let&rsquo;s try it with an implicit.</p>
-<pre class="prettyprint"><code class="language-scala">implicit val implyIntValue =
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">implicit val implyIntValue =
   data.as.String ~&gt; data.as.Int.fail { (k,v) =&gt;
     BadRequest ~&gt; ResponseString(
       s&quot;&#39;$v&#39; is not a valid int for $k&quot;

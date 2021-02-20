@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/page.js"></script>
 <script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
+<script type="text/javascript" src="../js/snippets.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="../css/page.css"/>
 
@@ -185,20 +186,20 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#request-matchers" name="request-matchers" class="anchor"><span class="anchor-link"></span></a>Request Matchers</h2>
 <h3><a href="#methods-and-paths" name="methods-and-paths" class="anchor"><span class="anchor-link"></span></a>Methods and Paths</h3>
 <p>Unfiltered supplies a wide range of <em>request matchers</em>&ndash;extractor objects that work against requests&ndash;from path segments to HTTP methods and headers. Applications use request matchers to define whether and how they will respond to a request.</p>
-<pre class="prettyprint"><code class="language-scala">case GET(Path(&quot;/record/1&quot;)) =&gt; ???</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">case GET(Path(&quot;/record/1&quot;)) =&gt; ???</code></pre>
 <p>This case will match GET requests to the path <code>/record/1</code>. To match against path segments, we can nest one additional extractor:</p>
-<pre class="prettyprint"><code class="language-scala">case GET(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">case GET(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???</code></pre>
 <p>This matches any <code>id</code> string that is directly under the record path. The <code>Seg</code> extractor object matches against the <code>String</code> type and it is typically nested under a <code>Path</code> matcher. <code>Seg</code> extracts a lists of strings from the supplied string, separated into path segments by forward-slashes.</p>
 <h3><a href="#reading-requests-and-delayed-matching" name="reading-requests-and-delayed-matching" class="anchor"><span class="anchor-link"></span></a>Reading Requests and Delayed Matching</h3>
 <p>The above case clause matches a request to get a record. What about putting them?</p>
-<pre class="prettyprint"><code class="language-scala">case req @ PUT(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt;
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">case req @ PUT(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt;
   val bytes = Body.bytes(req)</code></pre>
 <p>Access to the request body generally has side effects, such as the consumption of a stream that can only be read once. For this reason the body is not accessed from a request matcher, which could be evaluated more than one time, but from utility functions that operate on the request object.</p>
 <p>In this case, we assigned a reference to the request using <code>req @</code> and then read its body into a byte array&ndash;on the assumption that its body will fit into available memory. That aside, a minor annoyance is that this code introduces some repetition in the matching expression.</p>
-<pre class="prettyprint"><code class="language-scala">case GET(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">case GET(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???
 case req @ PUT(Path(Seg(&quot;record&quot; :: id :: Nil))) =&gt; ???</code></pre>
 <p>An alternative is to match first on the path, then on the method:</p>
-<pre class="prettyprint"><code class="language-scala">case req @ Path(Seg(&quot;record&quot; :: id :: Nil)) =&gt; req match {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">case req @ Path(Seg(&quot;record&quot; :: id :: Nil)) =&gt; req match {
   case GET(_) =&gt; ???
   case PUT(_) =&gt; ???
   case _ =&gt; ???

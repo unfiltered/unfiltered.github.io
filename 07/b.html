@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/page.js"></script>
 <script type="text/javascript" src="../js/warnOldVersion.js"></script>
 <script type="text/javascript" src="../js/groups.js"></script>
+<script type="text/javascript" src="../js/snippets.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="../css/page.css"/>
 
@@ -186,7 +187,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>Any part of a request can be used to route and accept or reject the request. Request parameters, encoded in a query string or a POST request body, are an open field for richer requests &ndash; and user error. We can handle these with directives as well.</p>
 <h3><a href="#parameters-values" name="parameters-values" class="anchor"><span class="anchor-link"></span></a>Parameters Values</h3>
 <p>In HTTP, a parameter key can be specified multiple times with different values. Unfiltered&rsquo;s base model for parameters is therefore a string key to a sequence of string values in the order they were supplied. This is easy to obtain in a directive.</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 import unfiltered.directives._, Directives._
 import unfiltered.jetty.SocketPortBinding
@@ -207,7 +208,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 <p>Even with no parameters, the directive succeeds with an empty sequence. Since it&rsquo;s not establishing control flow, we could have accessed it just as easily through the <a href="../06/b.html">Params map</a>. But typically, we do have requirements on our input.</p>
 <h3><a href="#im-thinking-of-a-number" name="im-thinking-of-a-number" class="anchor"><span class="anchor-link"></span></a>I&rsquo;m thinking of a Number</h3>
 <p>Things get more interesting when require parameters to be in a particular format. From here on out, we&rsquo;ll be working with <em>interpreters</em> in the <a href="https://oss.sonatype.org/service/local/repositories/releases/archive/ws/unfiltered/unfiltered-all_2.13/0.10.1/unfiltered-all_2.13-0.10.1-javadoc.jar/!/unfiltered/directives/data/index.html"><code>unfiltered.directives.data</code></a> package. Interpreters define abstract operations on data; we can produce directives for a particular request parameter with <code>named</code>.</p>
-<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
   unfiltered.filter.Planify { Directive.Intent {
     case Path(&quot;/&quot;) =&gt;
       for {
@@ -218,7 +219,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
 <p>By testing this service you&rsquo;ll find that all requests to the root path are accepted, and that the <code>in</code> value is bound to an <code>Option[Int]</code>. If an <code>in</code> request parameter is not present or not a valid int, the value is <code>None</code>. This is a directive, but it&rsquo;s still one that always produceses a <code>Success</code> result.</p><div class="callout note "><div class="callout-title">Note</div>
 <p>What about repeated parameters? The object <code>data.as.Int</code> is an interpreter from <code>String</code> to <code>Int</code>, but in HTTP we model parameter values as a sequence of strings. This gap is bridged by another interpreter <code>data.as.String</code>, which chooses the first in the sequence. It&rsquo;s applied implicitly when needed.</p></div>
 <p>We can transform an interpreter that ignores failed interpretation into one that produces a failure response by passing an error handler to its <code>fail</code> method.</p>
-<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
   unfiltered.filter.Planify { Directive.Intent {
     case Path(&quot;/&quot;) =&gt;
       for {

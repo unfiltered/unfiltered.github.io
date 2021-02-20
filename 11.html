@@ -11,6 +11,7 @@
 <script type="text/javascript" src="js/page.js"></script>
 <script type="text/javascript" src="js/warnOldVersion.js"></script>
 <script type="text/javascript" src="js/groups.js"></script>
+<script type="text/javascript" src="js/snippets.js"></script>
 <link rel="stylesheet" type="text/css" href="lib/foundation/dist/foundation.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/page.css"/>
 
@@ -185,7 +186,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h3><a href="#serving-resources-from-a-relative-path" name="serving-resources-from-a-relative-path" class="anchor"><span class="anchor-link"></span></a>Serving Resources from a relative path</h3>
 <p>Sometimes you may want to serve resources from a relative path, for example a sibling directory located at <code>../client</code>. But paths containing <code>..</code> are considered aliased and Jetty disallows these by default, as described in this <a href="http://www.eclipse.org/jetty/documentation/current/serving-aliased-files.html">policy</a>.</p>
 <p>If you&rsquo;ve evaluated the security risks described in the link above and wish to enable aliases in paths, you can do so with <code>allowAliases(true)</code>, eg:</p>
-<pre class="prettyprint"><code class="language-scala">import unfiltered.jetty.ContextAdder
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">import unfiltered.jetty.ContextAdder
 
 unfiltered.jetty.Server.http(8080).
   context(&quot;/client&quot;){ ctx: ContextAdder =&gt;
@@ -195,7 +196,7 @@ unfiltered.jetty.Server.http(8080).
   }.plan(myPlan).run()</code></pre>
 <h3><a href="#enabling-request-logs" name="enabling-request-logs" class="anchor"><span class="anchor-link"></span></a>Enabling Request Logs</h3>
 <p>Jetty can be configured to log all requests in Common or Extended formats with <code>requestLogging</code>. This is a global, not per-context, <a href="http://www.eclipse.org/jetty/documentation/current/configuring-jetty-request-logs.html">setting</a>. At minimum you need to specify where to log to:</p>
-<pre class="prettyprint"><code class="language-scala">unfiltered.jetty.Server.http(8080).plan(myPlan).requestLogging(&quot;/tmp/access.log&quot;).run()</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">unfiltered.jetty.Server.http(8080).plan(myPlan).requestLogging(&quot;/tmp/access.log&quot;).run()</code></pre>
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="12.html">ScalaTest</a></p>
 </div>
