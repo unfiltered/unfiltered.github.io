@@ -211,7 +211,7 @@ object SillyStore extends unfiltered.filter.Plan {
 <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">unfiltered.jetty.Server.local(8080).plan(SillyStore).run()</code></pre>
 <p>The method <code>local</code>, like <code>anylocal</code>, binds only to the loopback interface, for safety. SillyStore is not quite &ldquo;web-scale&rdquo;.</p>
 <h3><a href="#curling-the-store" name="curling-the-store" class="anchor"><span class="anchor-link"></span></a>Curling the Store</h3>
-<p>The command line utility <a href="http://curl.haxx.se/">cURL</a> is great for testing HTTP servers. First, we&rsquo;ll try to retrieve a record.</p>
+<p>The command line utility <a href="https://curl.se">cURL</a> is great for testing HTTP servers. First, we&rsquo;ll try to retrieve a record.</p>
 <pre class="prettyprint"><code class="language-sh">curl -i http://127.0.0.1:8080/record/my+file
 </code></pre>
 <p>The <code>-i</code> tells it to print out the response headers. Curl does a GET by default; since there is no record by that or any other name it prints out the 404 response with our error message. We have to PUT something into storage.</p>

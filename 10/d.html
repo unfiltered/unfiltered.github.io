@@ -188,7 +188,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h3><a href="#other-asynchronous-libraries" name="other-asynchronous-libraries" class="anchor"><span class="anchor-link"></span></a>Other Asynchronous Libraries</h3>
 <p>Luckily, the &ldquo;nettyplayin&rdquo; project created in the last few pages already depends on a second asynchronous library, dispatch-nio, which acts as client for HTTP requests to other services. Using an <code>async.Plan</code> with <code>dispatch.nio.Http</code>, we can query other HTTP services to satisfy a request without hoarding a thread for the many milliseconds it could take to perform that request.</p>
 <h3><a href="#always-sunny-in" name="always-sunny-in" class="anchor"><span class="anchor-link"></span></a>Always Sunny in&hellip;</h3>
-<p>Google has a <a href="http://blog.programmableweb.com/2010/02/08/googles-secret-weather-api/">secret</a> weather API. Let&rsquo;s use that until they take it offline.</p>
+<p>Google has a <a href="https://www.programmableweb.com/news/googles-secret-weather-api/2010/02/08">secret</a> weather API. Let&rsquo;s use that until they take it offline.</p>
 <pre class="prettyprint"><code class="language-scala">import dispatch._
 val h = new nio.Http
 def weather(loc: String) =
