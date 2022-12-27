@@ -31,7 +31,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.4
+0.12.0
 </div>
 </div>
 <div class="nav-toc">
@@ -110,7 +110,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.10.4
+0.12.0
 </div>
 </div>
 <div class="nav-toc">
@@ -196,7 +196,13 @@ unfiltered.jetty.Server.http(8080).
   }.plan(myPlan).run()</code></pre>
 <h3><a href="#enabling-request-logs" name="enabling-request-logs" class="anchor"><span class="anchor-link"></span></a>Enabling Request Logs</h3>
 <p>Jetty can be configured to log all requests in Common or Extended formats with <code>requestLogging</code>. This is a global, not per-context, <a href="http://www.eclipse.org/jetty/documentation/current/configuring-jetty-request-logs.html">setting</a>. At minimum you need to specify where to log to:</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">unfiltered.jetty.Server.http(8080).plan(myPlan).requestLogging(&quot;/tmp/access.log&quot;).run()</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">unfiltered.jetty.Server.http(8080)
+  .plan(myPlan)
+  .requestLogging(
+    filename = &quot;/tmp/access.log&quot;,
+    format = &quot;some log format&quot;
+  )
+  .run()</code></pre>
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="12.html">ScalaTest</a></p>
 </div>
@@ -278,7 +284,7 @@ unfiltered.jetty.Server.http(8080).
 <script type="text/javascript" src="lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.10.4', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.12.0', '')});</script>
 
 
 </html>
