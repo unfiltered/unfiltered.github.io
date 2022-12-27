@@ -185,7 +185,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#project-setup" name="project-setup" class="anchor"><span class="anchor-link"></span></a>Project Setup</h2>
 <h3><a href="#modules-and-artifacts" name="modules-and-artifacts" class="anchor"><span class="anchor-link"></span></a>Modules and Artifacts</h3>
 <p>Unfiltered&rsquo;s core, binding, server, and other modules are published with references to their underlying dependencies, so that applications need only explicitly depend on Unfiltered and other top-level dependencies. Keep in mind that server modules and binding modules are not generally co-dependent, so that if you are using for example unfiltered-jetty, you will also need to specify unfiltered-filter.</p>
-<p>Each module is <a href="http://www.scala-sbt.org/release/docs/Cross-Build.html">cross-built</a> against several versions of Scala and published to the <a href="https://oss.sonatype.org/content/repositories/releases/ws/unfiltered/">sonatype</a> repository with the organization-id &ldquo;ws.unfiltered&rdquo;. The modules have the Scala version they are built against appended. For Scala 2.12+, the full artifact names are as follows:</p>
+<p>Each module is <a href="https://www.scala-sbt.org/release/docs/Cross-Build.html">cross-built</a> against several versions of Scala and published to the <a href="https://oss.sonatype.org/content/repositories/releases/ws/unfiltered/">sonatype</a> repository with the organization-id &ldquo;ws.unfiltered&rdquo;. The modules have the Scala version they are built against appended. For Scala 2.12+, the full artifact names are as follows:</p>
 <ul>
   <li>unfiltered_2.12</li>
   <li>unfiltered-filter_2.12</li>
@@ -202,7 +202,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 </ul>
 <h3><a href="#build-tools" name="build-tools" class="anchor"><span class="anchor-link"></span></a>Build Tools</h3>
 <h4><a href="#configuring-sbt-projects" name="configuring-sbt-projects" class="anchor"><span class="anchor-link"></span></a>Configuring sbt projects</h4>
-<p>When using sbt with <strong>binary dependencies</strong> it&rsquo;s best to have the Scala version <a href="http://www.scala-sbt.org/release/docs/Cross-Build.html">automatically appended</a> so it will always match your project&rsquo;s. In an sbt project:</p>
+<p>When using sbt with <strong>binary dependencies</strong> it&rsquo;s best to have the Scala version <a href="https://www.scala-sbt.org/release/docs/Cross-Build.html">automatically appended</a> so it will always match your project&rsquo;s. In an sbt project:</p>
 <pre class="prettyprint"><code class="language-scala">libraryDependencies += &quot;ws.unfiltered&quot; %% &quot;unfiltered-filter&quot; % &quot;0.12.0&quot;
 </code></pre>
 <h4><a href="#maven" name="maven" class="anchor"><span class="anchor-link"></span></a>Maven</h4>
