@@ -185,20 +185,20 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#project-setup" name="project-setup" class="anchor"><span class="anchor-link"></span></a>Project Setup</h2>
 <h3><a href="#modules-and-artifacts" name="modules-and-artifacts" class="anchor"><span class="anchor-link"></span></a>Modules and Artifacts</h3>
 <p>Unfiltered&rsquo;s core, binding, server, and other modules are published with references to their underlying dependencies, so that applications need only explicitly depend on Unfiltered and other top-level dependencies. Keep in mind that server modules and binding modules are not generally co-dependent, so that if you are using for example unfiltered-jetty, you will also need to specify unfiltered-filter.</p>
-<p>Each module is <a href="https://www.scala-sbt.org/release/docs/Cross-Build.html">cross-built</a> against several versions of Scala and published to the <a href="https://oss.sonatype.org/content/repositories/releases/ws/unfiltered/">sonatype</a> repository with the organization-id &ldquo;ws.unfiltered&rdquo;. The modules have the Scala version they are built against appended. For Scala 2.12+, the full artifact names are as follows:</p>
+<p>Each module is <a href="https://www.scala-sbt.org/release/docs/Cross-Build.html">cross-built</a> against several versions of Scala and published to the <a href="https://repo1.maven.org/maven2/ws/unfiltered/">maven central</a> repository with the organization-id &ldquo;ws.unfiltered&rdquo;. The modules have the Scala version they are built against appended. For Scala 3+, the full artifact names are as follows:</p>
 <ul>
-  <li>unfiltered_2.12</li>
-  <li>unfiltered-filter_2.12</li>
-  <li>unfiltered-filter-async_2.12</li>
-  <li>unfiltered-netty_2.12</li>
-  <li>unfiltered-netty-websockets_2.12</li>
-  <li>unfiltered-jetty_2.12</li>
-  <li>unfiltered-netty-server_2.12</li>
-  <li>unfiltered-uploads_2.12</li>
-  <li>unfiltered-util_2.12</li>
-  <li>unfiltered-specs2_2.12</li>
-  <li>unfiltered-scalatest_2.12</li>
-  <li>unfiltered-json4s_2.12</li>
+  <li>unfiltered_3</li>
+  <li>unfiltered-filter_3</li>
+  <li>unfiltered-filter-async_3</li>
+  <li>unfiltered-netty_3</li>
+  <li>unfiltered-netty-websockets_3</li>
+  <li>unfiltered-jetty_3</li>
+  <li>unfiltered-netty-server_3</li>
+  <li>unfiltered-uploads_3</li>
+  <li>unfiltered-util_3</li>
+  <li>unfiltered-specs2_3</li>
+  <li>unfiltered-scalatest_3</li>
+  <li>unfiltered-json4s_3</li>
 </ul>
 <h3><a href="#build-tools" name="build-tools" class="anchor"><span class="anchor-link"></span></a>Build Tools</h3>
 <h4><a href="#configuring-sbt-projects" name="configuring-sbt-projects" class="anchor"><span class="anchor-link"></span></a>Configuring sbt projects</h4>
@@ -209,7 +209,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>For Maven, specify the full artifact name:</p>
 <pre class="prettyprint"><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;ws.unfiltered&lt;/groupId&gt;
-  &lt;artifactId&gt;unfiltered-filter_2.12&lt;/artifactId&gt;
+  &lt;artifactId&gt;unfiltered-filter_3&lt;/artifactId&gt;
   &lt;version&gt;0.12.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
