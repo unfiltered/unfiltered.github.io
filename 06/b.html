@@ -231,7 +231,7 @@ object Neg extends Params.Extract(
 )
 val intEcho = unfiltered.filter.Planify {
   case Params(Pos(pos) &amp; Neg(neg)) =&gt;
-    ResponseString(&quot;%d %d&quot;.format(pos,neg))
+    ResponseString(s&quot;${pos} ${neg}&quot;)
 }
 unfiltered.jetty.Server.anylocal.plan(intEcho).run()</code></pre><div class="callout note "><div class="callout-title">Note</div>
 <p>The <code>&amp;</code> extractor matches when the extractor to its left and right match, in this case to require multiple parameters.</p></div>

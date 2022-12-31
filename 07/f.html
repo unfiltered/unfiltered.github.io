@@ -214,7 +214,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
       for {
         even &lt;- evenInt named &quot;even&quot;
       } yield ResponseString(
-        even + &quot;\n&quot;
+        even.toString + &quot;\n&quot;
       )
   } }
 ).run()</code></pre>
@@ -241,7 +241,7 @@ implicit def implyTool =
       for {
         tool &lt;- data.as.Option[Tool] named &quot;id&quot;
       } yield ResponseString(
-        tool + &quot;\n&quot;
+        tool.toString + &quot;\n&quot;
       )
   } }
 ).run()</code></pre>

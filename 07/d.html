@@ -221,7 +221,7 @@ opt: Some(hello) req: world
       for {
         in &lt;- data.as.BigInt ~&gt; required named &quot;in&quot;
       } yield ResponseString(
-        in % 10 + &quot;\n&quot;
+        (in % 10).toString + &quot;\n&quot;
       )
   } }
 ).run()</code></pre>
@@ -240,7 +240,7 @@ in is missing
           BadRequest ~&gt; ResponseString(s&quot;&#39;$v&#39; is not a valid int for $k\n&quot;)
         ) ~&gt; required named &quot;in&quot;
       } yield ResponseString(
-        in % 10 + &quot;\n&quot;
+        (in % 10).toString + &quot;\n&quot;
       )
   } }
 ).run()</code></pre>

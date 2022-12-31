@@ -194,7 +194,7 @@ unfiltered.filter.Plan {
     case Path(&quot;/&quot;) &amp; Cookies(cookies) =&gt;
       ResponseString(cookies(&quot;pref&quot;) match {
         case Some(c: Cookie) =&gt;
-          &quot;you pref %s, don&#39;t you?&quot; format c.value
+          s&quot;you pref ${c.value}, don&#39;t you?&quot;
         case _ =&gt; &quot;no preference?&quot;
       })
     case Path(&quot;/prefer&quot;) &amp; Params(p) =&gt;
@@ -216,7 +216,7 @@ val binding = SocketPortBinding(host = &quot;localhost&quot;, port = 8080)
 
 unfiltered.jetty.Server.portBinding(binding).plan(
   App(JimsAuth)
-).run</code></pre>
+).run()</code></pre>
 <p>In your browser, open the url <code>http://localhost:8080/</code> and you should be greeted with its native authentication dialog. Enter <code>jim</code> and <code>j@m</code>, if you are feeling authentic.</p>
 <p>Once authenticated you should see simple text questioning your preferences. Why is this? Well, you have yet to tell the server what you prefer. In your url bar, enter the address</p>
 <pre class="prettyprint"><code class="nocode">http://localhost:8080/prefer?pref=kittens

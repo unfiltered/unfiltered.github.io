@@ -203,7 +203,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
         a &lt;- intValue named &quot;a&quot;
         b &lt;- intValue named &quot;b&quot;
       } yield ResponseString(
-        (a ++ b).sum + &quot;n&quot;
+        (a ++ b).sum.toString + &quot;n&quot;
       )
   } }
 ).run()</code></pre>
@@ -225,7 +225,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(
         a &lt;- data.as.Option[Int] named &quot;a&quot;
         b &lt;- data.as.Option[Int] named &quot;b&quot;
       } yield ResponseString(
-        (a ++ b).sum + &quot;\n&quot;
+        (a ++ b).sum.toString + &quot;\n&quot;
       )
   } }
 ).run()</code></pre>
