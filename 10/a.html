@@ -192,12 +192,16 @@ cd nettyplayin
 sbt console
 </code></pre>
 <p>Once you do get to a console, this should just work:</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><code class="language-scala">import unfiltered.response._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/10/a.scala#L6-L10" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.response._
 val hello = unfiltered.netty.cycle.Planify {
   case _ =&gt; ResponseString(&quot;hello world&quot;)
 }
 unfiltered.netty.Server.http(8080).plan(hello).run()</code></pre>
 <p>Direct a web browser to <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> and you&rsquo;ll be in <em>hello world</em> business.</p>
+<div class="source-github">
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/paradox/10/a.md">here</a>.
+</div>
+
 <div class="nav-next">
 <p><strong>Next:</strong> <a href="../10/b.html">Execution and Exceptions</a></p>
 </div>
