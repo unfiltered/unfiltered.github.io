@@ -189,7 +189,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/11.scala#L6-L13" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.jetty.ContextAdder
 
 unfiltered.jetty.Server.http(8080).
-  context(&quot;/client&quot;){ ctx: ContextAdder =&gt;
+  context(&quot;/client&quot;){ (ctx: ContextAdder) =&gt;
     ctx.resources(new java.net.URL(
       &quot;&quot;&quot;file:../client&quot;&quot;&quot;
     )).allowAliases(true)

@@ -209,7 +209,7 @@ val pEcho = unfiltered.filter.Planify {
 <p>When a parameter transformation function fails, <code>None</code> is produced and the extractor does not match for the request. Knowing this, you can write your own transformation functions using <code>map</code> and <code>filter</code>.</p>
 <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/b.scala#L32-L37" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object NotShortTest extends Params.Extract(
   &quot;test&quot;,
-  Params.first ~&gt; { p: Option[String] =&gt;
+  Params.first ~&gt; { (p: Option[String]) =&gt;
     p.filter { _.length &gt; 4 }
   }
 )</code></pre>
