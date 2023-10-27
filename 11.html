@@ -190,9 +190,9 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 
 unfiltered.jetty.Server.http(8080).
   context(&quot;/client&quot;){ (ctx: ContextAdder) =&gt;
-    ctx.resources(new java.net.URL(
+    ctx.resources(new java.net.URI(
       &quot;&quot;&quot;file:../client&quot;&quot;&quot;
-    )).allowAliases(true)
+    ).toURL).allowAliases(true)
   }.plan(myPlan).run()</code></pre>
 <h3><a href="#enabling-request-logs" name="enabling-request-logs" class="anchor"><span class="anchor-link"></span></a>Enabling Request Logs</h3>
 <p>Jetty can be configured to log all requests in Common or Extended formats with <code>requestLogging</code>. This is a global, not per-context, <a href="http://www.eclipse.org/jetty/documentation/current/configuring-jetty-request-logs.html">setting</a>. At minimum you need to specify where to log to:</p>
