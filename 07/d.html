@@ -187,17 +187,19 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>So far we&rsquo;ve learned know how to define implicit interpreters from a sequence of string to any type T and use them with <code>data.as.Option[T]</code>. Now we&rsquo;ll see how to use the same interpreters for required parameters.</p>
 <h3><a href="#your-function" name="your-function" class="anchor"><span class="anchor-link"></span></a>Your &ldquo;required&rdquo; Function</h3>
 <p>The failure to supply a required parameter must produce an application defined error response. We&rsquo;ll define a very simple one.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/d.scala#L10-L16" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/d.scala#L10-L18" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 import unfiltered.directives._, Directives._
+import unfiltered.directives.data.Requiring
 
-implicit def required[T] = data.Requiring[T].fail(name =&gt;
-  BadRequest ~&gt; ResponseString(name + &quot; is missing\n&quot;)
-)</code></pre>
+implicit def required[T]: Requiring[T, ResponseFunction[Any]] =
+  data.Requiring[T].fail(name =&gt;
+    BadRequest ~&gt; ResponseString(name + &quot; is missing\n&quot;)
+  )</code></pre>
 <p>The name of the function is not important when used implicitly, but call it <code>required</code> is a good convention since you may also want to use it explicitly when defining interpreters inline.</p>
 <h3><a href="#using-implicitly" name="using-implicitly" class="anchor"><span class="anchor-link"></span></a>Using &ldquo;required&rdquo; Implicitly</h3>
 <p>With a required function in scope we can use it with any implicit interpreters also in scope. The <code>data.as.String</code> interpreter is imported from the <code>Directives</code> object, so we can use it immediately.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/d.scala#L21-L31" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/d.scala#L23-L33" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
   unfiltered.filter.Planify { Directive.Intent {
     case Path(&quot;/&quot;) =&gt;
       for {
@@ -215,7 +217,7 @@ opt: Some(hello) req: world
 <p>Since <code>req</code> is required to produce a success response, it&rsquo;s not wrapped in <code>Option</code> or anything else; the type of the bound value is whatever its interpreter produces.</p>
 <h3><a href="#using-explicitly" name="using-explicitly" class="anchor"><span class="anchor-link"></span></a>Using &ldquo;required&rdquo; Explicitly</h3>
 <p>Most interpreters work with an option of the data so that they can be chained together in support of both optional and required parameters. Required is itself an interpreter which unboxes from the <code>Option</code>, so it generally must be the last interpreter in a chain.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/d.scala#L36-L45" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/d.scala#L38-L47" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
   unfiltered.filter.Planify { Directive.Intent {
     case Path(&quot;/&quot;) =&gt;
       for {
@@ -232,7 +234,7 @@ $ curl http://127.0.0.1:8080/ -d in=1334534a
 in is missing
 </code></pre>
 <p>To be more specific, we can supply a failure to the integer interpreter.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/d.scala#L50-L61" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/d.scala#L52-L63" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.portBinding(binding).plan(
   unfiltered.filter.Planify { Directive.Intent {
     case Path(&quot;/&quot;) =&gt;
       for {
