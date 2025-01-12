@@ -31,7 +31,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.12.0
+0.12.1
 </div>
 </div>
 <div class="nav-toc">
@@ -110,7 +110,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.12.0
+0.12.1
 </div>
 </div>
 <div class="nav-toc">
@@ -188,7 +188,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>Directives are an example of an Unfiltered <a href="../08/b.html">kit</a>, set of tools providing a higher level of abstraction over the core library.</p></div>
 <h3><a href="#selective-enforcement" name="selective-enforcement" class="anchor"><span class="anchor-link"></span></a>Selective enforcement</h3>
 <p>You can define a directive function using familiar request extractors. Let&rsquo;s start with a raw intent function.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/a.scala#L6-L16" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/07/a.scala#L6-L16" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 import unfiltered.jetty.SocketPortBinding
 
@@ -204,7 +204,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(Simple).run()</code></pre>
 curl -v http://localhost:8080/
 </code></pre>
 <p>The 404 response page to the second request is not so great. With directives, we&rsquo;ll do better than that <em>by default</em>.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/a.scala#L21-L29" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.directives._, Directives._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/07/a.scala#L21-L29" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.directives._, Directives._
 
 val Smart = unfiltered.filter.Planify { Directive.Intent {
   case Path(&quot;/&quot;) =&gt;
@@ -218,7 +218,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(Smart).run()</code></pre>
 <p>The 406 error response is produced by the directive itself, encapsulating behavior that can be used everywhere. What if you want different error behavior? Make your own directive! (Seriously, you&rsquo;ll see how on the next page.)</p>
 <h3><a href="#one-true-path" name="one-true-path" class="anchor"><span class="anchor-link"></span></a>One true path</h3>
 <p>You may have noticed that directives transfer (and enrich) routing logic from extractors. If your extractors are reduced to the task of matching against paths alone, you can even eliminate those.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/07/a.scala#L34-L40" target="_blank" title="Go to snippet source">source</a><code class="language-scala">val Sweet = unfiltered.filter.Planify { Directive.Intent.Path {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/07/a.scala#L34-L40" target="_blank" title="Go to snippet source">source</a><code class="language-scala">val Sweet = unfiltered.filter.Planify { Directive.Intent.Path {
   case &quot;/&quot; =&gt;
     for {
       _ &lt;- Accepts.Json
@@ -227,7 +227,7 @@ unfiltered.jetty.Server.portBinding(binding).plan(Smart).run()</code></pre>
 unfiltered.jetty.Server.portBinding(binding).plan(Sweet).run()</code></pre>
 <p>It looks pretty different, but remember that here still composes to a standard Unfiltered intent function.</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/paradox/07/a.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/paradox/07/a.md">here</a>.
 </div>
 
 <div class="nav-next">
@@ -311,7 +311,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.12.0', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.12.1', '')});</script>
 
 
 </html>

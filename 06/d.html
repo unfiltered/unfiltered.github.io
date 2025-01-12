@@ -31,7 +31,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.12.0
+0.12.1
 </div>
 </div>
 <div class="nav-toc">
@@ -110,7 +110,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.12.0
+0.12.1
 </div>
 </div>
 <div class="nav-toc">
@@ -186,7 +186,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#silly-store" name="silly-store" class="anchor"><span class="anchor-link"></span></a>Silly Store</h2>
 <h3><a href="#opening-the-store" name="opening-the-store" class="anchor"><span class="anchor-link"></span></a>Opening the Store</h3>
 <p>Using the request matchers and response functions outlined over the last couple of pages, we have everything we need to build a naive key-value store.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/d.scala#L5-L25" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/d.scala#L5-L25" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 
 object SillyStore extends unfiltered.filter.Plan {
@@ -208,7 +208,7 @@ object SillyStore extends unfiltered.filter.Plan {
   }
 }</code></pre>
 <p>Go ahead and paste that into a <a href="../01.html">console</a>. Then, execute the plan with a server, adjusting the port if your system does not have 8080 available.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/d.scala#L30" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.local(8080).plan(SillyStore).run()</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/d.scala#L30" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.local(8080).plan(SillyStore).run()</code></pre>
 <p>The method <code>local</code>, like <code>anylocal</code>, binds only to the loopback interface, for safety. SillyStore is not quite &ldquo;web-scale&rdquo;.</p>
 <h3><a href="#curling-the-store" name="curling-the-store" class="anchor"><span class="anchor-link"></span></a>Curling the Store</h3>
 <p>The command line utility <a href="https://curl.se">cURL</a> is great for testing HTTP servers. First, we&rsquo;ll try to retrieve a record.</p>
@@ -229,7 +229,7 @@ curl -i http://127.0.0.1:8080/record/my+file
 </code></pre>
 <p>405 Method Not Allowed. But it&rsquo;s a shame, really. DELETE support would be easy to add. Why don&rsquo;t you give it a try?</p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/paradox/06/d.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/paradox/06/d.md">here</a>.
 </div>
 
 <div class="nav-next">
@@ -313,7 +313,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.12.0', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.12.1', '')});</script>
 
 
 </html>

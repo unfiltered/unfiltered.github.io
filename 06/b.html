@@ -31,7 +31,7 @@
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.12.0
+0.12.1
 </div>
 </div>
 <div class="nav-toc">
@@ -110,7 +110,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <span class="home-icon">⌂</span>Unfiltered
 </a>
 <div class="version-number">
-0.12.0
+0.12.1
 </div>
 </div>
 <div class="nav-toc">
@@ -186,7 +186,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h2><a href="#within-the-parameters" name="within-the-parameters" class="anchor"><span class="anchor-link"></span></a>Within the Parameters</h2>
 <h3><a href="#extracting-params" name="extracting-params" class="anchor"><span class="anchor-link"></span></a>Extracting Params</h3>
 <p>Requests are commonly accompanied by named parameters, either in the <a href="https://en.wikipedia.org/wiki/Query_string">query string</a> of the URL or in the body of a <a href="https://en.wikipedia.org/wiki/POST_%28HTTP%29#Use_for_submitting_web_forms">POST</a>. Unfiltered supports access to these parameters with the <code>Params</code> extractor.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/b.scala#L6-L11" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/b.scala#L6-L11" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
 import unfiltered.response._
 val pEcho = unfiltered.filter.Planify {
   case Params(params) =&gt;
@@ -194,32 +194,32 @@ val pEcho = unfiltered.filter.Planify {
 }</code></pre>
 <p>The type of <code>params</code> extracted is <code>Map[String, Seq[String]]</code>, with a default value of <code>Seq.empty</code>. With this interface, it is always safe to apply the map. But keep in mind that parameters may be specified with no value, and may occur multiple times. The <code>Params</code> extractor returns empty strings for named parameters with no value, as many times in the sequence as they occurred in the request.</p>
 <p>For example, the query string <code>?test&amp;test=3&amp;test</code> produces the sequence of strings <code>&quot;&quot;, &quot;3&quot;, &quot;&quot;</code>. You can check this yourself by querying the plan defined above:</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/b.scala#L15" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.anylocal.plan(pEcho).run()</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/b.scala#L15" target="_blank" title="Go to snippet source">source</a><code class="language-scala">unfiltered.jetty.Server.anylocal.plan(pEcho).run()</code></pre>
 <h3><a href="#routing-by-parameter" name="routing-by-parameter" class="anchor"><span class="anchor-link"></span></a>Routing by Parameter</h3>
 <p>While the <code>Params</code> extractor is useful for accessing parameters, it doesn&rsquo;t provide any control flow to an intent partial function.</p>
 <p>If you want to route requests based on the parameters present, you&rsquo;ll need to nest a custom extractor inside <code>Params</code>. For this Unfiltered provides a <code>Params.Extract</code> base class:</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/b.scala#L19" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object Test extends Params.Extract(&quot;test&quot;, Params.first)</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/b.scala#L19" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object Test extends Params.Extract(&quot;test&quot;, Params.first)</code></pre>
 <p>The above extractor will match on the first parameter named &ldquo;test&rdquo; in a request. If no parameters are named test, the pattern does not match. However, a named parameter with no value would match. We can exclude this possibility with a richer definition.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/b.scala#L24-L27" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object NonEmptyTest extends Params.Extract(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/b.scala#L24-L27" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object NonEmptyTest extends Params.Extract(
   &quot;test&quot;,
   Params.first ~&gt; Params.nonempty
 )</code></pre>
 <p>The second parameter of the <code>Params.Extract</code> constructor is a function <code>Seq[String] =&gt; Option[B]</code>, with <code>B</code> being the type extracted. The values <code>first</code> and <code>nonempty</code> are functions defined in the <code>Params</code> object that may be chained together with <code>~&gt;</code> (as with response functions).</p>
 <p>Typically the chain begins with <code>first</code>, to require at least one parameter of the given name and discard the rest. Subsequent functions may require a <code>nonempty</code> value as above, or produce a <code>trimmed</code> string, or an <code>int</code> value from the string.</p>
 <p>When a parameter transformation function fails, <code>None</code> is produced and the extractor does not match for the request. Knowing this, you can write your own transformation functions using <code>map</code> and <code>filter</code>.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/b.scala#L32-L37" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object NotShortTest extends Params.Extract(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/b.scala#L32-L37" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object NotShortTest extends Params.Extract(
   &quot;test&quot;,
   Params.first ~&gt; { (p: Option[String]) =&gt;
     p.filter { _.length &gt; 4 }
   }
 )</code></pre>
 <p>There&rsquo;s also a convenience function to simplify the definition of transformation <em>predicates</em>.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/b.scala#L42-L45" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object NotShortTest2 extends Params.Extract(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/b.scala#L42-L45" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object NotShortTest2 extends Params.Extract(
   &quot;test&quot;,
   Params.first ~&gt; Params.pred { _.length &gt; 4 }
 )</code></pre>
 <p>Try it all out in this server, which returns 404 unless provided with a &ldquo;pos&rdquo; parameter that is a positive integer, and &ldquo;neg&rdquo; that is negative.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/scala/06/b.scala#L50-L64" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object Pos extends Params.Extract(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/06/b.scala#L50-L64" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object Pos extends Params.Extract(
   &quot;pos&quot;,
   Params.first ~&gt; Params.int ~&gt;
     Params.pred { _ &gt; 0 }
@@ -236,7 +236,7 @@ val intEcho = unfiltered.filter.Planify {
 unfiltered.jetty.Server.anylocal.plan(intEcho).run()</code></pre><div class="callout note "><div class="callout-title">Note</div>
 <p>The <code>&amp;</code> extractor matches when the extractor to its left and right match, in this case to require multiple parameters.</p></div>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.12.0/src/main/paradox/06/b.md">here</a>.
+The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/paradox/06/b.md">here</a>.
 </div>
 
 <div class="nav-next">
@@ -320,7 +320,7 @@ The source code for this page can be found <a href="https://github.com/unfiltere
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
 <script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.12.0', '')});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.12.1', '')});</script>
 
 
 </html>
