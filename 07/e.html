@@ -188,9 +188,8 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>But among the request parameters themselves, it may be desirable to respond with multiple error messages when there are multiple parameters in error. This can be accomplished by combining directives into a single directive which knows how to bundle the error responses.</p>
 <h3><a href="#normalizing-error-responses" name="normalizing-error-responses" class="anchor"><span class="anchor-link"></span></a>Normalizing Error Responses</h3>
 <p>Even if you don&rsquo;t intend to bundle errors right away, it&rsquo;s a good idea to generate error responses in a consistent way. This allows you to factor out the status code generation and to put error messages in context. One way to do this is with a case class.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/07/e.scala#L6-L14" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.request._
-import unfiltered.response._
-import unfiltered.directives._, Directives._
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/07/e.scala#L7-L14" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.response._
+import unfiltered.directives._
 import unfiltered.directives.data.Requiring
 
 case class OneBadParam(msg: String) extends Responder[Any] {
@@ -214,31 +213,6 @@ case class OneBadParam(msg: String) extends Responder[Any] {
 <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/07/e.scala#L37-L39" target="_blank" title="Go to snippet source">source</a><code class="language-scala">implicit def required[T]: Requiring[T, BadParam] = data.Requiring[T].fail(name =&gt;
   BadParam(name + &quot; is missing&quot;)
 )</code></pre>
-<h3><a href="#joining-and-splitting-directives" name="joining-and-splitting-directives" class="anchor"><span class="anchor-link"></span></a>Joining and Splitting Directives</h3>
-<p>Now that we have joinable error responses issued from our required interpreter, we can use the <code>&amp;</code> method of <code>Directive</code> to join them, as well as an unapply method of <code>unfiltered.request.&amp;</code> to split them.</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/scala/07/e.scala#L44-L60" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import unfiltered.jetty.SocketPortBinding
-
-val binding = SocketPortBinding(host = &quot;localhost&quot;, port = 8080)
-
-unfiltered.jetty.Server.portBinding(binding).plan(
-  unfiltered.filter.Planify { Directive.Intent {
-    case Path(&quot;/&quot;) =&gt;
-      for {
-        (a &amp; b &amp; c) &lt;-
-          (data.as.Required[String] named &quot;a&quot;) &amp;
-          (data.as.Required[String] named &quot;b&quot;) &amp;
-          (data.as.Required[String] named &quot;c&quot;)
-      } yield ResponseString(
-        s&quot;a: $a b: $b c: $c&quot;
-      )
-  } }
-).run()</code></pre>
-<p>In a failure case, the errors objects are combined and returned on separate lines. On success, the combined directive produces nested tuples of the success cases which <code>&amp;</code> extracts in the order produced.</p>
-<pre class="prettyprint"><code class="language-sh">$ curl http://127.0.0.1:8080/
-a is missing
-b is missing
-c is missing
-</code></pre>
 <div class="source-github">
 The source code for this page can be found <a href="https://github.com/unfiltered/website/tree/v0.12.1/src/main/paradox/07/e.md">here</a>.
 </div>
@@ -257,7 +231,6 @@ The source code for this page can be found <a href="https://github.com/unfiltere
   <ul>
     <li><a href="../07/e.html#normalizing-error-responses" class="header">Normalizing Error Responses</a></li>
     <li><a href="../07/e.html#joinable-responses" class="header">Joinable Responses</a></li>
-    <li><a href="../07/e.html#joining-and-splitting-directives" class="header">Joining and Splitting Directives</a></li>
   </ul></li>
 </ul>
 </div>
